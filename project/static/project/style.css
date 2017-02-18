@@ -1,0 +1,33 @@
+ul.sidebar {
+    list-style: none;
+}
+
+#header {
+    padding-left: 65px;
+}
+
+div.main-link {
+    display: block;
+    padding: 20px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    max-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    background: #38BB64;
+    color: white;
+}
+
+a.main-link:link, a.main-link:visited, a.main-link:active,  a.main-link:hover {
+    color: white;
+    font-size: 20px;
+}
+
+.switch {
+    text-align: center;
+}
+
+#footer {
+    padding-bottom:40px;
+    padding-left: 65px;
+}

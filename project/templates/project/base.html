@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Honours Project</title>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'project/style.css' %}" />
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="col-sm-12" id="header">
+    <div class="row">
+        <h1>QBEval</h1>
+    </div>
+    <div class="row">
+        <hr>
+    </div>
+</div>
+
+<div class="col-sm-2" id="sidebar">
+    <ul class="sidebar">
+        <li>Home</li>
+        <li>About</li>
+        <li>Tutorial</li>
+    </ul>
+</div>
+
+<div class="col-sm-7" id="content-area">
+        {% block content %}
+        {% endblock %}
+</div>
+
+<div class="row" id="footer">
+    <div class="col-sm-12">
+        <hr>
+        <span>Copyright Glasgow Caledonian University 2017</span>
+    </div>
+</div>
+
+</body>
+</html>
