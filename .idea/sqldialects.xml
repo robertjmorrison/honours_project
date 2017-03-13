@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="dbSrc:///36769d80/94ffdea5-8ea5-4785-b6a8-27cde9430010" dialect="SQLite" />
+    <file url="dbSrc:///36769d80/aeb9907e-b884-4035-bbe9-2504527dc412" dialect="SQLite" />
+  </component>
+</project>

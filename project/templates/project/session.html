@@ -1,5 +1,22 @@
 {% extends 'project/base.html' %}
 
 {% block content %}
+    <p>{{ game.date_time }} vs {{game.opponent }}</p>
+
+    {% if play_list %}
+        <div class="row">
+        <div class="col-md-6">
+            <!--iframe width="100%" height="315" src="https://www.youtube.com/embed/hHQ9Fiiqu8k" frameborder="0" allowfullscreen></iframe-->
+            <div style='position:relative;padding-bottom:57%'><iframe src='https://gfycat.com/ifr/AmazingElectricCowrie' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+        </div>
+        <div class="col-md-6">
+            <ul class="sidebar">
+            {% for play in play_list.all %}
+                <li><a href="#">{{ play }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        </div>
+    {% endif %}
 
 {% endblock %}

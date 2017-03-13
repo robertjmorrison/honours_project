@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from .models import *
+from itertools import chain
 
 
 def index(request):
@@ -14,10 +15,14 @@ def index(request):
 
 
 # get all plays from a session
-def session(request):
-    play_list = Game.Play.objects.order_by('play')
+def session(request, game_id):
+    # get the desired game
+    game = get_object_or_404(Game, pk=game_id)
+    # find all plays from that game
+    play_list = game.play_set
 
     context = {
-        'play_list': play_list,
+        'game': game,
+        'play_list': play_list
     }
     return render(request, 'project/session.html', context)

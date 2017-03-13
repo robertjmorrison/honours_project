@@ -5,7 +5,7 @@
     <span class="switch"><h2>Browse By Session</h2></span>
 {% if game_list %}
     {% for game in game_list %}
-        <a class='main-link' href="#">
+        <a class='main-link' href="session/{{ game.id }}">
             <div class="col-sm-3 main-link">
             {{ game.date_time }} {{ game }}
             </div>

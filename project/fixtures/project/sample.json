@@ -1,0 +1,155 @@
+[
+  {
+    "model": "project.Game",
+    "pk": 1,
+    "fields": {
+      "date_time": "2016-09-14 14:30",
+      "opponent": "Dundee Hurricanes",
+      "venue": "A"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 2,
+    "fields": {
+      "date_time": "2016-09-21 12:30",
+      "opponent": "West Coast Trojans",
+      "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 3,
+    "fields": {
+      "date_time": "2016-08-21 12:45",
+      "opponent": "Dundee Hurricanes",
+      "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 4,
+    "fields": {
+      "date_time": "2016-09-29 19:30",
+      "opponent": "Newcastle Vikings",
+      "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 5,
+    "fields": {
+      "date_time": "2016-09-09 14:00",
+      "opponent": "Carlisle Sentinels",
+      "venue": "A"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 6,
+    "fields": {
+      "date_time": "2016-07-21 12:30",
+      "opponent": "Glasgow Tigers",
+      "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 7,
+    "fields": {
+      "date_time": "2016-10-03 12:30",
+      "opponent": "Dundee Hurricanes",
+      "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 8,
+    "fields": {
+      "date_time": "2016-09-22 12:30",
+      "opponent": "Aberdeen Roughnecks",
+      "venue": "A"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 9,
+    "fields": {
+      "date_time": "2017-08-14 16:15",
+      "opponent": "Clyde Valley Blackhawks",
+      "venue": "A"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 1,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "43",
+      "quarter": "2",
+      "time": "14:30",
+      "gain": "7",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 2,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "3",
+      "field_half": "OPP",
+      "yard_line": "27",
+      "quarter": "3",
+      "time": "03:21",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 3,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "13",
+      "field_half": "OPP",
+      "yard_line": "21",
+      "quarter": "4",
+      "time": "06:51",
+      "gain": "29",
+      "complete": "True",
+      "outcome": "TD",
+      "passer": 1,
+      "receiver": 2
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 4,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "11",
+      "quarter": "3",
+      "time": "03:41",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "INT",
+      "passer": 1,
+      "receiver": 2
+    }
+  }
+]
