@@ -23,17 +23,19 @@ class Game(models.Model):
 class Player(models.Model):
     first_name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)
-    jersey_no = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(1)])
+    jersey_no = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(1)], null=True)
+    imageUrl = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.second_name)
 
 
-class Quarterback(Player):
-    pass_rating = models.IntegerField
-
-    def __str__(self):
-        return "%s %s" % (self.first_name, self.second_name)
+class Performance(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    completions = models.IntegerField()
+    attempts = models.IntegerField()
+    pass_rating = models.DecimalField(max_digits=4, decimal_places=1)
 
 
 class Play(models.Model):
@@ -73,6 +75,10 @@ class Play(models.Model):
     outcome = models.CharField(max_length=3, choices=OUTCOMES)
     passer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_passer')
     receiver = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_receiver')
+
+    gfy_url = models.CharField(max_length=50, null=True)
+    gfy_url_alt = models.CharField(max_length=50, null=True)
+    gfy_url_alt2 = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         # e.g. (Q3 - 04:31) 3rd & 7, Gain of 14

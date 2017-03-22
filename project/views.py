@@ -15,14 +15,28 @@ def index(request):
 
 
 # get all plays from a session
-def session(request, game_id):
+def session(request, game_id, play_id=1):
     # get the desired game
     game = get_object_or_404(Game, pk=game_id)
     # find all plays from that game
+    play_detail = get_object_or_404(Play, pk=play_id)
     play_list = game.play_set
 
     context = {
         'game': game,
-        'play_list': play_list
+        'play_list': play_list,
+        'play_id': play_id,
+        'play_detail': play_detail
     }
     return render(request, 'project/session.html', context)
+
+
+def play_info(request, play_id, game_id):
+    # get the chosen play
+    game = get_object_or_404(Game, pk=game_id)
+    play = get_object_or_404(Play, pk=play_id)
+
+    context = {
+        'play': play
+    }
+    return render(request, 'project/play.html', context)

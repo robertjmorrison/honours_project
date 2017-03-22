@@ -1,22 +1,82 @@
 {% extends 'project/base.html' %}
+{% include 'project/play.html' %}
 
 {% block content %}
-    <p>{{ game.date_time }} vs {{game.opponent }}</p>
+    <h1>Caledonian Roughriders vs {{game.opponent }}</h1>
+    <h3>{{ game.date_time.date }}, Win (38-7)</h3>
 
     {% if play_list %}
+
         <div class="row">
         <div class="col-md-6">
             <!--iframe width="100%" height="315" src="https://www.youtube.com/embed/hHQ9Fiiqu8k" frameborder="0" allowfullscreen></iframe-->
-            <div style='position:relative;padding-bottom:57%'><iframe src='https://gfycat.com/ifr/AmazingElectricCowrie' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+            <!-- Video Clips -->
+            <div id="tabs">
+                <ul>
+                <li><a href="#tabs-1">Main View</a></li>
+                <li><a href="#tabs-2">Alternative View #1</a></li>
+                <li><a href="#tabs-3">Alternative View #2</a></li>
+                </ul>
+                <div id="tabs-1">
+                 <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.gfy_url }}' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+                </div>
+                <div id="tabs-2">
+                 <div style='position:relative;padding-bottom:57%'><iframe src='https://gfycat.com/ifr/AmazingElectricCowrie' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+                </div>
+                <div id="tabs-3">
+                 <div style='position:relative;padding-bottom:57%'><iframe src='https://gfycat.com/ifr/AmazingElectricCowrie' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+                </div>
+            </div>
+            <!-- Charts -->
+            <script>
+            var myChart = new Chart({...})
+            </script>
         </div>
         <div class="col-md-6">
-            <ul class="sidebar">
-            {% for play in play_list.all %}
-                <li><a href="#">{{ play }}</a></li>
-            {% endfor %}
-            </ul>
+        <div class="row">
+            <div class="col-sm-6 qb">
+                <img class="qb" src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/KAE371576.png">
+                <p>Colin Kaepernick #7<br>3/13, 0 TD, 1 INT<br><input type="checkbox" name="showPlayer" value="Player" checked>Show This Player?<br></p>
+
+            </div>
+            <div class="col-sm-6 qb">
+                <img class="qb" src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/COU709400.png">
+                <p>Kirk Cousins #8<br>21/27, 4 TD, 1 INT<br><input type="checkbox" name="showPlayer" value="Player" checked>Show This Player?</p>
+
+            </div>
         </div>
+        <div id="accordion">
+        <h3>Quarter 1</h3>
+        <div id ="quarter1"><ul class="sidebar"></ul></div>
+        <h3>Quarter 2</h3>
+        <div id ="quarter2"><ul class="sidebar"></ul></div>
+        <h3>Quarter 3</h3>
+        <div id ="quarter3"><ul class="sidebar"></ul></div>
+        <h3>Quarter 4</h3>
+        <div id ="quarter4"><ul class="sidebar"></ul></div>
+                </div>
+            {% for play in play_list.all %}
+                {% if play.quarter == 1 %}
+                    <script>
+                        $("#quarter1").append('<li><a href="#" onclick="showPlay">{{ play }}</a></li');
+                    </script>
+                {% endif %}
+                {% if play.quarter == 2 %}
+                    <script>
+                        $("#quarter2").append('<li><a href="#">{{ play }}</a></li');
+                    </script>
+                {% endif %}
+                {% if play.quarter == 3 %}
+                     <script>
+                        $("#quarter3").append('<li><a href="#">{{ play }}</a></li');
+                    </script>
+                {% endif %}
+                {% if play.quarter == 4 %}
+                     <script>
+                        $("#quarter4").append('<li><a href="#">{{ play }}</a></li');
+                    </script>
+                {% endif %}
+            {% endfor %}
         </div>
     {% endif %}
-
 {% endblock %}
