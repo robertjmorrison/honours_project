@@ -1,3 +1,41 @@
+h1 {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 46px;
+    font-size: 43px;
+    margin: 0 0 23px 0;
+}
+h2 {
+    font-family: 'Cantarell', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 0px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 0 0;
+}
+p {
+    font-family: 'Cantarell', sans-serif;
+    font-size: 17px;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+}
+
+li, a, span {
+    font-family: 'Cantarell', sans-serif;
+}
+
+hr {
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #E9E9E9 !important;
+}
+
 ul.sidebar {
     list-style: none;
 }
@@ -33,13 +71,62 @@ a.main-link:link, a.main-link:visited, a.main-link:active,  a.main-link:hover {
 }
 
 img.qb {
-    max-width: 65%;
+    max-width: 100%;
+    min-width: 100%;
     display: block;
     border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
 }
 
 div.qb {
     text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/project/static/project/img/bg-image.png");
+    background-position: left;
+}
+
+.about {
+    max-width: 100%;
+}
+
+.zero-pad {
+    padding: 0 !important;
+}
+
+.hidden {
+    display: none;
+}
+
+#container {
+	min-width: 100%;
+	max-width: 100%;
+    width: 100% !important;
+    height: 400px;
+	margin: 0 auto;
+}
+
+#airyards {
+
+}
+
+#quarters {
+    height: 200px;
+    overflow-y: scroll;
+    list-style: decimal;
+    
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.ui-widget {
+
 }

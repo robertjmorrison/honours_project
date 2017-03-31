@@ -1,8 +1,25 @@
 [
   {
+    "model": "project.Team",
+    "pk": 1,
+    "fields": {
+      "name": "Stanford",
+      "nickname": "Cardinal"
+    }
+  },
+  {
+    "model": "project.Team",
+    "pk": 2,
+    "fields": {
+      "name": "Clemson",
+      "nickname": "Tigers"
+    }
+  },
+  {
     "model": "project.Game",
     "pk": 1,
     "fields": {
+      "team": 1,
       "date_time": "2016-09-14 14:30",
       "opponent": "Iowa Hawk-Eyes",
       "venue": "N"
@@ -12,72 +29,10 @@
     "model": "project.Game",
     "pk": 2,
     "fields": {
-      "date_time": "2016-09-21 12:30",
-      "opponent": "West Coast Trojans",
+      "team": 2,
+      "date_time": "2016-09-14 14:30",
+      "opponent": "Alabama Crimson Tide",
       "venue": "H"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 3,
-    "fields": {
-      "date_time": "2016-08-21 12:45",
-      "opponent": "Dundee Hurricanes",
-      "venue": "H"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 4,
-    "fields": {
-      "date_time": "2016-09-29 19:30",
-      "opponent": "Newcastle Vikings",
-      "venue": "H"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 5,
-    "fields": {
-      "date_time": "2016-09-09 14:00",
-      "opponent": "Carlisle Sentinels",
-      "venue": "A"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 6,
-    "fields": {
-      "date_time": "2016-07-21 12:30",
-      "opponent": "Glasgow Tigers",
-      "venue": "H"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 7,
-    "fields": {
-      "date_time": "2016-10-03 12:30",
-      "opponent": "Dundee Hurricanes",
-      "venue": "H"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 8,
-    "fields": {
-      "date_time": "2016-09-22 12:30",
-      "opponent": "Aberdeen Roughnecks",
-      "venue": "A"
-    }
-  },
-  {
-    "model": "project.Game",
-    "pk": 9,
-    "fields": {
-      "date_time": "2017-08-14 16:15",
-      "opponent": "Clyde Valley Blackhawks",
-      "venue": "A"
     }
   },
   {
@@ -96,7 +51,12 @@
       "outcome": "TD",
       "passer": 1,
       "receiver": 2,
-      "gfy_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "//streamable.com/e/adujw/ywtpfp",
+      "vid_url_alt": "//streamable.com/e/iao5y/ukeeiu",
+      "vid_url_alt2": "//streamable.com/e/6gbfo/mztnnz",
+      "accurate": "True",
+      "air_yards": 15,
+      "note": "Bad footwork: QB should keep plant leg on the ground when throwing"
     }
   },
   {
@@ -115,7 +75,7 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 3,
-      "gfy_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "//streamable.com/e/smmoc/hslva"
     }
   },
   {
@@ -134,7 +94,8 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 2,
-      "gfy_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "//streamable.com/e/l9i1n/mlnjec",
+      "vid_url_alt": "//streamable.com/e/5dfxn/kfthl"
     }
   },
   {
@@ -153,7 +114,7 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 4,
-      "gfy_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "//streamable.com/e/ero4i/mlhkhe"
     }
   },
   {
@@ -172,7 +133,369 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 5,
-      "gfy_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "//streamable.com/e/32cpt/vzmgll"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 6,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "6",
+      "field_half": "OWN",
+      "yard_line": "19",
+      "quarter": "2",
+      "time": "11:10",
+      "gain": "8",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "//streamable.com/e/vgumr/ijltdb"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 7,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "42",
+      "quarter": "2",
+      "time": "10:28",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "//streamable.com/e/1yexf/rzzjdk"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 8,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "31",
+      "quarter": "2",
+      "time": "8:22",
+      "gain": "31",
+      "complete": "True",
+      "outcome": "TD",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "//streamable.com/e/2mzcj/plvjbc",
+      "vid_url_alt": "//streamable.com/e/q3ozo/cosrow"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 9,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "6",
+      "field_half": "OWN",
+      "yard_line": "41",
+      "quarter": "2",
+      "time": "1:31",
+      "gain": "11",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": "//streamable.com/e/ytvfn/gszbsg"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 10,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "43",
+      "quarter": "2",
+      "time": "0:41",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "//streamable.com/e/yfk4m/nhvxsp"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 11,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "43",
+      "quarter": "2",
+      "time": "0:34",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "//streamable.com/e/3y23g/psonoi"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 12,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "4",
+      "field_half": "OWN",
+      "yard_line": "41",
+      "quarter": "3",
+      "time": "12:48",
+      "gain": "11",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 13,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "18",
+      "quarter": "3",
+      "time": "11:52",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 14,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "6",
+      "field_half": "OPP",
+      "yard_line": "14",
+      "quarter": "3",
+      "time": "11:13",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 15,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "9",
+      "field_half": "OWN",
+      "yard_line": "36",
+      "quarter": "3",
+      "time": "8:43",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 16,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "22",
+      "field_half": "OWN",
+      "yard_line": "40",
+      "quarter": "3",
+      "time": "0:15",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 17,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "22",
+      "field_half": "OWN",
+      "yard_line": "40",
+      "quarter": "3",
+      "time": "0:01",
+      "gain": "-3",
+      "complete": "False",
+      "outcome": "SK",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 18,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "30",
+      "quarter": "4",
+      "time": "12:56",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 18,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OPP",
+      "yard_line": "37",
+      "quarter": "4",
+      "time": "10:22",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 3,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 18,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "9",
+      "field_half": "OPP",
+      "yard_line": "9",
+      "quarter": "4",
+      "time": "5:44",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "INT",
+      "passer": 1,
+      "receiver": 3,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 19,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "49",
+      "quarter": "4",
+      "time": "2:33",
+      "gain": "7",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 20,
+    "fields": {
+      "game": 1,
+      "down": "2",
+      "distance": "3",
+      "field_half": "OPP",
+      "yard_line": "42",
+      "quarter": "4",
+      "time": "1:54",
+      "gain": "42",
+      "complete": "True",
+      "outcome": "TD",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 21,
+    "fields": {
+      "game": 1,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "30",
+      "quarter": "4",
+      "time": "12:56",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 22,
+    "fields": {
+      "game": 1,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OPP",
+      "yard_line": "37",
+      "quarter": "4",
+      "time": "10:22",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 3,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
     }
   },
   {
@@ -181,8 +504,8 @@
     "fields": {
       "first_name": "Kevin",
       "second_name": "Hogan",
-      "jersey_no": "7",
-      "imageUrl": "noimg"
+      "jersey_no": "8",
+      "imageUrl": "https://www.daddyleagues.com/img/nfl/madden17/8054.png"
     }
   },
   {
@@ -222,6 +545,56 @@
       "first_name": "Devon",
       "second_name": "Cajuste",
       "jersey_no": "45",
+      "imageUrl": "noimg"
+    }
+  },
+  {
+    "model": "project.Player",
+    "pk": 6,
+    "fields": {
+      "first_name": "Barry",
+      "second_name": "Sanders",
+      "jersey_no": "21",
+      "imageUrl": "noimg"
+    }
+  },
+  {
+    "model": "project.Player",
+    "pk": 7,
+    "fields": {
+      "first_name": "Michael",
+      "second_name": "Rector",
+      "jersey_no": "4",
+      "imageUrl": "noimg"
+    }
+  },
+  {
+    "model": "project.Player",
+    "pk": 8,
+    "fields": {
+      "first_name": "Isaiah",
+      "second_name": "Brandt-Sims",
+      "jersey_no": "89",
+      "imageUrl": "noimg"
+    }
+  },
+  {
+    "model": "project.Player",
+    "pk": 8,
+    "fields": {
+      "first_name": "Austin",
+      "second_name": "Hooper",
+      "jersey_no": "14",
+      "imageUrl": "noimg"
+    }
+  },
+  {
+    "model": "project.Player",
+    "pk": 9,
+    "fields": {
+      "first_name": "Francis",
+      "second_name": "Owusu",
+      "jersey_no": "33",
       "imageUrl": "noimg"
     }
   }

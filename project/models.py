@@ -2,6 +2,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=40)
+    nickname = models.CharField(max_length=40)
+
+    def __str__(self):
+        return " "
+
+
 class Game(models.Model):
     # define venue types
     HOME = 'H'
@@ -13,6 +21,7 @@ class Game(models.Model):
         (NEUTRAL, 'Neutral Venue')
     )
     date_time = models.DateTimeField('Game Date')
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     opponent = models.CharField(max_length=50)
     venue = models.CharField(max_length=1, choices=VENUE_CHOICES)
 
@@ -25,6 +34,7 @@ class Player(models.Model):
     second_name = models.CharField(max_length=50)
     jersey_no = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(1)], null=True)
     imageUrl = models.CharField(max_length=50, null=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.second_name)
@@ -50,13 +60,15 @@ class Play(models.Model):
     )
 
     INT = 'INT',
-    TD = 'TD'
-    PA = 'PA'
+    TD = 'TD',
+    PA = 'PA',
+    SK = 'SK'
 
     OUTCOMES = (
         (TD, 'Touchdown'),
         (INT, 'Interception'),
-        (PA, 'Pass Attempt')
+        (PA, 'Pass Attempt'),
+        (SK, 'Sack')
 
     )
 
@@ -76,9 +88,14 @@ class Play(models.Model):
     passer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_passer')
     receiver = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_receiver')
 
-    gfy_url = models.CharField(max_length=50, null=True)
-    gfy_url_alt = models.CharField(max_length=50, null=True)
-    gfy_url_alt2 = models.CharField(max_length=50, null=True)
+    vid_url = models.CharField(max_length=50, null=True)
+    vid_url_alt = models.CharField(max_length=50, null=True)
+    vid_url_alt2 = models.CharField(max_length=50, null=True)
+
+    air_yards = models.IntegerField(validators=[MaxValueValidator(100)], null=True)
+    accurate = models.BooleanField(default=True)
+
+    note = models.TextField(max_length=300, null=True)
 
     def __str__(self):
         # e.g. (Q3 - 04:31) 3rd & 7, Gain of 14
