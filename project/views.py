@@ -26,6 +26,7 @@ def session(request, game_id, play_id=1, team_id=1):
     # play_list = game.play_set
     play_list = Play.objects.filter(game=game_id)
     other_games = Game.objects.exclude(pk=game_id).filter(team=team_id)
+    all_plays = Play.objects.all()
 
     # for each element of team_game
     # find all plays in play_list that share the game ID
@@ -33,6 +34,33 @@ def session(request, game_id, play_id=1, team_id=1):
     # gains = [[[] for i in range(4)] for i in range(4)]
     # other_plays = [[] for i in range(other_games.count())]
 
+    q1yards = 0
+    q2yards = 0
+    q3yards = 0
+    q4yards = 0
+
+    for a in all_plays:
+        if a.game != game:
+            if a.quarter == 1:
+                q1yards += a.gain
+            if a.quarter == 2:
+                q2yards += a.gain
+            if a.quarter == 3:
+                q3yards += a.gain
+            if a.quarter == 4:
+                q4yards += a.gain
+
+    avg_q1yards = q1yards / other_games.count()
+    avg_q2yards = q2yards / other_games.count()
+    avg_q3yards = q3yards / other_games.count()
+    avg_q4yards = q4yards / other_games.count()
+
+    avg_yards_cum = [0, 0, 0, 0]
+
+    avg_yards_cum[0] = avg_q1yards
+    avg_yards_cum[1] = avg_yards_cum[0] + avg_q2yards
+    avg_yards_cum[2] = avg_yards_cum[1] + avg_q3yards
+    avg_yards_cum[3] = avg_yards_cum[2] + avg_q4yards
 
     play_tagline = "%s-yard %s at %s %s (Q%s %s)" % (play_detail.gain, play_detail.outcome, play_detail.field_half,
                                                      play_detail.yard_line, play_detail.quarter, play_detail.time)
@@ -152,6 +180,15 @@ def session(request, game_id, play_id=1, team_id=1):
         'q_ypa': q_ypa,
         'game_list': game_list,
         'other_games': other_games,
+        'q1yards': q1yards,
+        'q2yards': q2yards,
+        'q3yards': q3yards,
+        'q4yards': q4yards,
+        'avg_q1yards': avg_q1yards,
+        'avg_q2yards': avg_q2yards,
+        'avg_q3yards': avg_q3yards,
+        'avg_q4yards': avg_q4yards,
+        'avg_yards_cum': avg_yards_cum
     }
     return render(request, 'project/session.html', context)
 
