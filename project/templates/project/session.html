@@ -161,7 +161,6 @@
             </div>
         </div>
     <div>
-
     </div>
         <div class="col-sm-9 hidden" id="charts">
             <div id="container">
@@ -187,6 +186,12 @@
                         <label for="season-avg">Season Average</label>
                         <input type="checkbox" name="radio-1" id="season-avg" onclick="chartSwitch()">
                     </fieldset>
+                    {% for o in other_games.all %}
+                        {{ o.venue }}
+                    {% endfor %}
+
+                {{ gains }}
+
                 </form>
             </span>
             <script>
@@ -282,8 +287,11 @@
                         if (b.checked) {
                             console.log("checked");
                             for (var z=1; z < chart.series.length-1;z++) {
+                                var yards = [83, 73, 94, 51];
                                 chart.series[z].show();
-                                chart.series[z].setData([42, 51, 103, 84], false);
+
+
+                            chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
                             }
                         }
                         else {

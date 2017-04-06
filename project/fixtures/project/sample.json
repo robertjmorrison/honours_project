@@ -29,10 +29,20 @@
     "model": "project.Game",
     "pk": 2,
     "fields": {
-      "team": 2,
+      "team": 1,
       "date_time": "2016-09-14 14:30",
       "opponent": "Alabama Crimson Tide",
       "venue": "H"
+    }
+  },
+  {
+    "model": "project.Game",
+    "pk": 3,
+    "fields": {
+      "team": 1,
+      "date_time": "2016-09-14 14:30",
+      "opponent": "Boise State Broncos",
+      "venue": "A"
     }
   },
   {
@@ -56,7 +66,10 @@
       "vid_url_alt2": "//streamable.com/e/6gbfo/mztnnz",
       "accurate": "True",
       "air_yards": 15,
-      "note": "Bad footwork: QB should keep plant leg on the ground when throwing"
+      "note": "Bad footwork: QB should keep plant leg on the ground when throwing",
+      "route": "Seam",
+      "play": " ",
+      "speed": "16.74"
     }
   },
   {
@@ -499,13 +512,52 @@
     }
   },
   {
+    "model": "project.Play",
+    "pk": 23,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OPP",
+      "yard_line": "37",
+      "quarter": "4",
+      "time": "10:22",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 3,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 24,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "41",
+      "quarter": "2",
+      "time": "10:22",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "TD",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+    }
+  },
+  {
     "model": "project.Player",
     "pk": 1,
     "fields": {
       "first_name": "Kevin",
       "second_name": "Hogan",
       "jersey_no": "8",
-      "imageUrl": "https://www.daddyleagues.com/img/nfl/madden17/8054.png"
+      "imageUrl": "https://www.daddyleagues.com/img/nfl/madden17/8054.png",
+      "team": 1
     }
   },
   {
@@ -515,7 +567,8 @@
       "first_name": "Christian",
       "second_name": "McCaffrey",
       "jersey_no": "5",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -525,7 +578,8 @@
       "first_name": "Trenton",
       "second_name": "Irwin",
       "jersey_no": "80",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -535,7 +589,8 @@
       "first_name": "Bryce",
       "second_name": "Love",
       "jersey_no": "12",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -545,7 +600,8 @@
       "first_name": "Devon",
       "second_name": "Cajuste",
       "jersey_no": "45",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -555,7 +611,8 @@
       "first_name": "Barry",
       "second_name": "Sanders",
       "jersey_no": "21",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -565,7 +622,8 @@
       "first_name": "Michael",
       "second_name": "Rector",
       "jersey_no": "4",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -575,7 +633,8 @@
       "first_name": "Isaiah",
       "second_name": "Brandt-Sims",
       "jersey_no": "89",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -585,7 +644,8 @@
       "first_name": "Austin",
       "second_name": "Hooper",
       "jersey_no": "14",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   },
   {
@@ -595,7 +655,8 @@
       "first_name": "Francis",
       "second_name": "Owusu",
       "jersey_no": "33",
-      "imageUrl": "noimg"
+      "imageUrl": "noimg",
+      "team": 1
     }
   }
 ]

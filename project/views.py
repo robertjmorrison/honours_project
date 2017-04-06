@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from .models import *
 from itertools import chain
+from django.core.exceptions import ObjectDoesNotExist
+from django.forms import ModelForm
 
 
 def index(request):
@@ -15,16 +17,32 @@ def index(request):
 
 
 # get all plays from a session
-def session(request, game_id, play_id=1):
+def session(request, game_id, play_id=1, team_id=1):
+    game_list = Game.objects.order_by('-date_time')
     # get the desired game
     game = get_object_or_404(Game, pk=game_id)
     # find all plays from that game
     play_detail = get_object_or_404(Play, pk=play_id)
     # play_list = game.play_set
     play_list = Play.objects.filter(game=game_id)
+    other_games = Game.objects.exclude(pk=game_id).filter(team=team_id)
+
+    # for each element of team_game
+    # find all plays in play_list that share the game ID
+    # store the gains of these plays in an array
+    # gains = [[[] for i in range(4)] for i in range(4)]
+    # other_plays = [[] for i in range(other_games.count())]
+
 
     play_tagline = "%s-yard %s at %s %s (Q%s %s)" % (play_detail.gain, play_detail.outcome, play_detail.field_half,
                                                      play_detail.yard_line, play_detail.quarter, play_detail.time)
+
+    w = 0
+    h = 5
+    for g in game_list:
+        w += 1
+    matrix = [[0 for x in range(w)] for y in range(h)]
+
 
     test = " "
     comp_count = 0
@@ -97,7 +115,8 @@ def session(request, game_id, play_id=1):
                 totalcomp[3] += 1
 
     for q in range(len(q_pct)):
-        q_pct[q] = round(((totalcomp[q] / q_plays[q]) * 100), 1)
+        if q_plays[q] > 0:
+            q_pct[q] = round(((totalcomp[q] / q_plays[q]) * 100), 1)
 
     q_yards_cum[0] = q_yards[0]
     q_yards_cum[1] = q_yards_cum[0] + q_yards[1]
@@ -106,7 +125,8 @@ def session(request, game_id, play_id=1):
 
     q_ypa = [0, 0, 0, 0]
     for q in range(len(q_ypa)):
-        q_ypa[q] = round(q_yards[q] / q_plays[q], 1)
+        if q_plays[q] > 0:
+            q_ypa[q] = round(q_yards[q] / q_plays[q], 1)
 
     context = {
         'game': game,
@@ -129,7 +149,9 @@ def session(request, game_id, play_id=1):
         'q_pct': q_pct,
         'q_plays': q_plays,
         'q_yards_cum': q_yards_cum,
-        'q_ypa': q_ypa
+        'q_ypa': q_ypa,
+        'game_list': game_list,
+        'other_games': other_games,
     }
     return render(request, 'project/session.html', context)
 
@@ -137,3 +159,10 @@ def session(request, game_id, play_id=1):
 def about(request):
 
     return render(request, 'project/about.html')
+
+
+class NoteForm(ModelForm):
+    class Meta:
+        model = Play
+        fields = ['note']
+
