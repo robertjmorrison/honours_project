@@ -44,10 +44,11 @@
 
 <div class="col-sm-12" id="header">
     <div class="row">
-        <p>
-        <h4><a href="{% url 'index' %}">Home</a>
-        <a href="{% url 'about' %}">About</a>
-            <a href="#">Tutorial</a></h4></a></p>
+    <ul class="navbar">
+      <li><a class="active" href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'about' %}">Tutorial</a></li>
+    </ul>
 
     </div>
     <div class="row">
