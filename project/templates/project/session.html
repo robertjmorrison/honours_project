@@ -41,6 +41,26 @@
     <label for="radio-3">Incompletions</label>
     <input type="radio" name="radio-1" id="radio-3">
   </fieldset>
+
+                        <div id="q1_inspect" title="Quarter 1">
+                    <ol></ol>
+                </div>
+                <div id="q2_inspect" title="Quarter 2">
+                    <ol></ol>
+                </div>
+                <div id="q3_inspect" title="Quarter 3">
+                    <ol></ol>
+                </div>
+                <div id="q4_inspect" title="Quarter 4">
+                    <ol></ol>
+                </div>
+
+                <script>
+                    $("#q1_inspect").dialog({ autoOpen: false });
+                    $("#q2_inspect").dialog({ autoOpen: false });
+                    $("#q3_inspect").dialog({ autoOpen: false });
+                    $("#q4_inspect").dialog({ autoOpen: false });
+                </script>
             <div class="col-md-12" id="quarters">
 <ol>
                     <div id ="quarter1">
@@ -61,34 +81,35 @@
                 {% if play.quarter == 1 %}
                 <script>
                     $("#quarter1").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+                    $("#q1_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
                 </script>
                 {% endif %}
                 {% if play.quarter == 2 %}
                 <script>
                     $("#quarter2").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+                    $("#q2_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+
                 </script>
                 {% endif %}
                 {% if play.quarter == 3 %}
                 <script>
                     $("#quarter3").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+                    $("#q3_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+
                 </script>
                 {% endif %}
                 {% if play.quarter == 4 %}
                 <script>
                     $("#quarter4").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+                    $("#q4_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+
                 </script>
                 {% endif %}
                 {% endfor %}
             </div>
         </div>
             <div class="col-m2-12 hidden" id="breakdown-vids">
-                <ul class="sidebar">
-                    <li>View Completed Passes</li>
-                    <li>View Incomplete Passes</li>
-                    <li>View Interceptions</li>
-                    <li>View Sacks</li>
-                    <li>View Touchdown Passes</li>
-                </ul>
+
             </div>
         </div>
         <div class="col-sm-9" id="video-plays">
@@ -158,6 +179,8 @@
                     });
                 </script>
 
+
+
             </div>
         </div>
     <div>
@@ -195,9 +218,13 @@
                     {{ q1yards }} {{ q2yards }} {{ q3yards }} {{ q4yards }} <br>
                 {{ avg_q1yards }} {{ avg_q2yards }} {{ avg_q3yards }} {{ avg_q4yards }}
 
+
+
                 </form>
             </span>
             <script>
+                var categories = ['1', '2', '3', '4'];
+                var selected = 0;
                 var chart = Highcharts.chart('container', {
 
                 title: {
@@ -219,7 +246,7 @@
                 },
 
                 xAxis: {
-                    allowDecimals: false,
+                    categories: categories,
                     title: {
                         text: " "
                     }
@@ -232,9 +259,39 @@
                 },
 
                 plotOptions: {
-                series: {
-                pointStart: 1
-                }
+                    series: {
+                        allowPointSelect: true,
+                        point: {
+                            events: {
+                                click: function(e) {
+                                    //var f = this.series.data.valueOf(this.series.point);
+                                    //var g = f.category;
+                                    //alert('x: ' + categories[Math.round(e.xAxis[0].value)]);
+                                    console.log(e.point.category);
+                                    var f = e.point.category;
+                                    selected = f;
+                                    //$('#quarters').removeClass('hidden');
+                                    if (f == 1) {
+                                        $( "#q1_inspect" ).dialog( "open" );
+                                    }
+                                    if (f == 2) {
+                                        $( "#q2_inspect" ).dialog( "open" );
+                                    }
+                                    if (f == 3) {
+                                        $( "#q3_inspect" ).dialog( "open" );
+                                    }
+                                    if (f == 4) {
+                                        $( "#q4_inspect" ).dialog( "open" );
+                                    }
+
+
+
+                                    // Only Show the selected quarter
+                                    // check substring of each div and check if it matches f
+                                }
+                            }
+                        }
+                    }
                 },
 
                 series: [{
@@ -264,6 +321,7 @@
 
 
                 });
+
 
                 function chartSwitch() {
                     var selectBox = document.getElementById("chart-type");

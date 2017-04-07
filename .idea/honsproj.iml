@@ -17,6 +17,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="highcharts.src" level="application" />
     <orderEntry type="library" name="exporting" level="application" />
+    <orderEntry type="library" name="highcharts" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
