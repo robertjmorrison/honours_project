@@ -47,6 +47,9 @@ class Player(models.Model):
     jersey_no = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(1)], null=True)
     imageUrl = models.CharField(max_length=50, null=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    feet = models.IntegerField(validators=[MaxValueValidator(8), MinValueValidator(4)], null=True)
+    inches = models.IntegerField(validators=[MaxValueValidator(11), MinValueValidator(0)], null=True)
+    pounds = models.IntegerField(validators=[MaxValueValidator(50), MinValueValidator(600)], null=True)
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.second_name)
@@ -95,7 +98,19 @@ class Play(models.Model):
         ('Wheel', 'Wheel'),
         ('Hitch', 'Hitch'),
         ('Slant', 'Slant'),
-        ('Screen', 'Screen')
+        ('Screen', 'Screen'),
+        ('Comeback', 'Comeback')
+    )
+
+    RB = 'RB',
+    TE = 'TE',
+    WR = 'WR',
+    ST = 'ST'
+    POSITIONS = (
+        (WR, 'Wide Receiver'),
+        (TE, 'Tight End'),
+        (RB, 'Running Back'),
+        (ST, 'Slot Receiver')
     )
 
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
@@ -113,6 +128,7 @@ class Play(models.Model):
     outcome = models.CharField(max_length=3, choices=OUTCOMES)
     passer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_passer')
     receiver = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='play_receiver')
+    position = models.CharField(max_length=3, choices=POSITIONS, null=True)
 
     vid_url = models.CharField(max_length=50, null=True)
     vid_url_alt = models.CharField(max_length=50, null=True)

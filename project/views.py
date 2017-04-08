@@ -27,6 +27,29 @@ def session(request, game_id, play_id=1, team_id=1):
     play_list = Play.objects.filter(game=game_id)
     other_games = Game.objects.exclude(pk=game_id).filter(team=team_id)
     all_plays = Play.objects.all()
+    w, h = game_list.count()+1, 4
+    prev_game_plays = [[Play() for x in range(w)] for y in range(h)]
+    quarter_yardage_totals = [[0 for x in range(w)] for y in range(h)]
+
+    r = play_detail.receiver
+    receiver_performance = [0, 0, 0, 0]  # targets, catches, yards, touchdowns
+    routes = []
+    for p in play_list:
+        if p.receiver == r:
+            receiver_performance[0] += 1  # add 1 to targets
+            if p.complete:
+                receiver_performance[1] += 1  # add 1 to catches
+                receiver_performance[2] += p.gain  # add gain to yards
+                routes.append(p.route)
+                if p.outcome == 'TD':
+                    receiver_performance[3] += 1
+
+    fav = max(set(routes), key=routes.count)
+
+    for z in range(game_list.count()):
+        for i in range(4):
+            prev_game_plays[z][i] = list(Play.objects.filter(game=str(z + 1), quarter=i+1).values_list('id', flat=True))
+            quarter_yardage_totals[z][i] = sum(Play.objects.filter(game=str(z + 1), quarter=i+1).values_list('gain', flat=True))
 
     # for each element of team_game
     # find all plays in play_list that share the game ID
@@ -40,20 +63,19 @@ def session(request, game_id, play_id=1, team_id=1):
     q4yards = 0
 
     for a in all_plays:
-        if a.game != game:
-            if a.quarter == 1:
-                q1yards += a.gain
-            if a.quarter == 2:
-                q2yards += a.gain
-            if a.quarter == 3:
-                q3yards += a.gain
-            if a.quarter == 4:
-                q4yards += a.gain
+        if a.quarter == 1:
+            q1yards += a.gain
+        if a.quarter == 2:
+            q2yards += a.gain
+        if a.quarter == 3:
+            q3yards += a.gain
+        if a.quarter == 4:
+            q4yards += a.gain
 
-    avg_q1yards = q1yards / other_games.count()
-    avg_q2yards = q2yards / other_games.count()
-    avg_q3yards = q3yards / other_games.count()
-    avg_q4yards = q4yards / other_games.count()
+    avg_q1yards = round((q1yards / game_list.count()), 0)
+    avg_q2yards = round(q2yards / game_list.count(), 0)
+    avg_q3yards = round(q3yards / game_list.count(), 0)
+    avg_q4yards = round(q4yards / game_list.count(), 0)
 
     avg_yards_cum = [0, 0, 0, 0]
 
@@ -101,8 +123,8 @@ def session(request, game_id, play_id=1, team_id=1):
         ncaa_formula = ((8.4 * yards) + (330 * td) + (100 * comp_count) - (200 * interceptions)) / total_plays
         ncaa_rating = round(ncaa_formula, 1)
 
-    avg_comp_statement = ""
-    avg_yards_statement = ""
+    avg_comp_statement = " "
+    avg_yards_statement = " "
     if avg_comp > pct:
         avg_comp_statement = "Below Average"
     else:
@@ -156,6 +178,11 @@ def session(request, game_id, play_id=1, team_id=1):
         if q_plays[q] > 0:
             q_ypa[q] = round(q_yards[q] / q_plays[q], 1)
 
+    pct_diff = avg_comp - pct
+
+    yac = 0
+    if play_detail.air_yards:
+        yac = play_detail.gain - play_detail.air_yards
     context = {
         'game': game,
         'play_list': play_list,
@@ -188,7 +215,14 @@ def session(request, game_id, play_id=1, team_id=1):
         'avg_q2yards': avg_q2yards,
         'avg_q3yards': avg_q3yards,
         'avg_q4yards': avg_q4yards,
-        'avg_yards_cum': avg_yards_cum
+        'avg_yards_cum': avg_yards_cum,
+        'pct_diff': pct_diff,
+        'yac': yac,
+        'prev_game_plays': prev_game_plays,
+        'quarter_yardage_totals': quarter_yardage_totals,
+        'receiver_performance': receiver_performance,
+        'routes': routes,
+        'fav': fav
     }
     return render(request, 'project/session.html', context)
 
