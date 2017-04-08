@@ -942,7 +942,7 @@
       "first_name": "Trenton",
       "second_name": "Irwin",
       "jersey_no": "80",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/irwin.jpg",
       "team": 1
     }
   },
@@ -953,7 +953,7 @@
       "first_name": "Bryce",
       "second_name": "Love",
       "jersey_no": "12",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/love.jpg",
       "team": 1
     }
   },
@@ -964,7 +964,7 @@
       "first_name": "Devon",
       "second_name": "Cajuste",
       "jersey_no": "45",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/cajuste.jpg",
       "team": 1
     }
   },
@@ -975,7 +975,7 @@
       "first_name": "Barry",
       "second_name": "Sanders",
       "jersey_no": "21",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/sanders.jpg",
       "team": 1
     }
   },
@@ -986,7 +986,7 @@
       "first_name": "Michael",
       "second_name": "Rector",
       "jersey_no": "4",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/rector.jpg",
       "team": 1
     }
   },
@@ -997,7 +997,7 @@
       "first_name": "Austin",
       "second_name": "Hooper",
       "jersey_no": "14",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/hooper.png",
       "team": 1
     }
   },
@@ -1008,7 +1008,7 @@
       "first_name": "Francis",
       "second_name": "Owusu",
       "jersey_no": "33",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/owusu.jpg",
       "team": 1
     }
   },
@@ -1019,7 +1019,7 @@
       "first_name": "Isaiah",
       "second_name": "Brandt-Sims",
       "jersey_no": "89",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/brandt-sims.jpg",
       "team": 1
     }
   }

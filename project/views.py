@@ -34,6 +34,7 @@ def session(request, game_id, play_id=1, team_id=1):
     r = play_detail.receiver
     receiver_performance = [0, 0, 0, 0]  # targets, catches, yards, touchdowns
     routes = []
+
     for p in play_list:
         if p.receiver == r:
             receiver_performance[0] += 1  # add 1 to targets
@@ -44,7 +45,10 @@ def session(request, game_id, play_id=1, team_id=1):
                 if p.outcome == 'TD':
                     receiver_performance[3] += 1
 
-    fav = max(set(routes), key=routes.count)
+    try:
+        fav = max(set(routes), key=routes.count)
+    except ValueError:
+        fav = "N/A"
 
     for z in range(game_list.count()):
         for i in range(4):
