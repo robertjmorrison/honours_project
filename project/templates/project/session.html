@@ -1,18 +1,30 @@
 {% extends 'project/base.html' %}
 {% include 'project/play.html' %}
+{% load staticfiles %}
 {% block content %}
 <div class="col-sm-12">
     <h2>Stanford Cardinal vs {{game.opponent }}</h2>
-    <h4> {{ game.date_time.date }}, Win (38-7)</h4>
+
+    <h4> {{ game.date_time.date }}, {{ game.result }} ({{ game.points_for }}-{{ game.points_against }})</h4>
     {% if play_list %}
-    <div class="row">
-        <div class="col-md-3">
-            <div class="row ui-widget ui-widget-content ui-corner-all">
+
+        <div class="col-md-3 zero-pad">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Quarterback Profile</h4></div>
+        <div class="panel panel-body">
+            <div class="row">
                 <div class="col-sm-6 qb">
                     <img class="qb" src="{{ play_detail.passer.imageUrl }}">
                     <p>{{ play_detail.passer }} #{{ play_detail.passer.jersey_no }}</p>
+                    <p>{{ play_detail.passer.feet }}' {{ play_detail.passer.inches }}" / {{ play_detail.passer.pounds }}lbs</p>
+                </div>
+                <div class="help-tip">
+	                <p>The average completion percentage across all Quarterbacks in NCAA-I is 61%.<br>
+                    <br>The average yards per game across all Quarterbacks in NCAA-I is 257 yards.<br>
+                    <br>'QBR', short for Quarterback Rating (also known as Passer Rating) is a formula intended to represent all facets of passing effectiveness in a single figure. For the NCAA formula, the minimum is −731.6 and the maximum is 1,261.6.</p>
                 </div>
                 <div class="col-sm-6">
+                    <h4>Game Statistics</h4>
                     <p>{{ comp_count }}/{{ total_plays }} ({{ pct }}%)</p>
                     <p class="average">{{ avg_comp_statement }}</p>
                     <p>{{ yards }} Yards</p>
@@ -27,41 +39,18 @@
                 <a href="#" id="analysis-link" onclick="showAnalysis()">Full Game Analysis ></a>
             <a href="#" id="video-link" class="hidden" onclick="showVideo()">Back to Video Analysis</a>
             </div>
-        <div class="widget">
+        </div>
+            </div><br>
 
-<br>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Choose A Play</h4></div>
+        <div class="row">
 
-</div>
-        <div class="row ui-widget ui-widget-content ui-corner-all">
-          <fieldset>
-    <label for="radio-1">All Plays</label>
-    <input type="radio" name="radio-1" id="radio-1">
-    <label for="radio-2">Completions</label>
-    <input type="radio" name="radio-1" id="radio-2">
-    <label for="radio-3">Incompletions</label>
-    <input type="radio" name="radio-1" id="radio-3">
-  </fieldset>
 
-                        <div id="q1_inspect" title="Quarter 1">
-                    <ol></ol>
-                </div>
-                <div id="q2_inspect" title="Quarter 2">
-                    <ol></ol>
-                </div>
-                <div id="q3_inspect" title="Quarter 3">
-                    <ol></ol>
-                </div>
-                <div id="q4_inspect" title="Quarter 4">
-                    <ol></ol>
-                </div>
 
-                <script>
-                    $("#q1_inspect").dialog({ autoOpen: false });
-                    $("#q2_inspect").dialog({ autoOpen: false });
-                    $("#q3_inspect").dialog({ autoOpen: false });
-                    $("#q4_inspect").dialog({ autoOpen: false });
-                </script>
-            <div class="col-md-12" id="quarters">
+
+
+            <div class="col-md-12  panel-body" id="quarters">
 <ol>
                     <div id ="quarter1">
                         <span class="strong">Quarter 1</span>
@@ -77,6 +66,25 @@
                     </div>
 </ol>
 
+                                    <div id="q1_inspect" title="Quarter 1">
+                    <ol></ol>
+                </div>
+                <div id="q2_inspect" title="Quarter 2">
+                    <ol></ol>
+                </div>
+                <div id="q3_inspect" title="Quarter 3">
+                    <ol></ol>
+                </div>
+                <div id="q4_inspect" title="Quarter 4">
+                    <ol></ol>
+                </div>
+                                <script>
+                    $("#q1_inspect").dialog({ autoOpen: false });
+                    $("#q2_inspect").dialog({ autoOpen: false });
+                    $("#q3_inspect").dialog({ autoOpen: false });
+                    $("#q4_inspect").dialog({ autoOpen: false });
+                </script>
+                        </div>
                 {% for play in play_list.all %}
                 {% if play.quarter == 1 %}
                 <script>
@@ -106,7 +114,8 @@
                 </script>
                 {% endif %}
                 {% endfor %}
-            </div>
+
+        </div>
         </div>
             <div class="col-m2-12 hidden" id="breakdown-vids">
 
@@ -138,9 +147,27 @@
                 <!-- Charts -->
             </div>
 
-            <div class="col-sm-4 ui-widget ui-widget-content ui-corner-all">
+            <div class="col-sm-4 zero-pad panel panel-default">
+                <div class="panel-heading"><h4>Receiver</h4></div>
+                <div class="panel-body">
                 <h4>{{ play_tagline }}</h4>
-                <p>Receiver: {{ play_detail.receiver }}</p>
+                    <div class="row">
+                <div class="col-sm-12">
+                    <p class="strong">#{{ play_detail.receiver.jersey_no }} {{ play_detail.receiver }}</p></div>
+                    <div class="col-sm-6">
+                        <p>Best Route: {{ fav }}</p>
+                        <p>{{ receiver_performance.0 }} Targets</p>
+                        <p>{{ receiver_performance.1 }} Catches</p>
+                        <p>{{ receiver_performance.2 }} Rec. Yards</p>
+                        <p>{{ receiver_performance.3 }} TD</p>
+                    </div>
+                                            <div class="col-sm-6 qb">
+                    <img class="qb" src="{% static play_detail.receiver.imageUrl %}">
+                    </div>
+                    </div>
+                    <br>
+
+                <p>Receiver was lined up as a {{ play_detail.position }}, catching a {{ play_detail.air_yards }}-yard {{ play_detail.route }} route and gained {{ yac }} additional yards after the catch, reaching a top speed of {{ play_detail.speed }}mph</p>
                 <div id="airyards" style="max-width: 310px; height: 400px; margin: 0 auto"></div>
                 <script>
                     Highcharts.chart('airyards', {
@@ -180,7 +207,7 @@
                 </script>
 
 
-
+</div>
             </div>
         </div>
     <div>
@@ -204,7 +231,7 @@
                     <fieldset>
                         <label for="game-only">This Game Only</label>
                         <input type="checkbox" name="radio-1" id="game-only" checked="checked" onclick="chartSwitch()">
-                        <label for="prev-games">All Previous Games</label>
+                        <label for="prev-games">Previous Game</label>
                         <input type="checkbox" name="radio-1" id="prev-games" onclick="chartSwitch()">
                         <label for="season-avg">Season Average</label>
                         <input type="checkbox" name="radio-1" id="season-avg" onclick="chartSwitch()">
@@ -298,18 +325,7 @@
                     name: 'vs {{ play_detail.game.opponent }}',
                     data: {{ q_yards }}
                 }, {
-                    name: 'Game 2',
-                    data: [ ],
-                    visible: false
-                },
-                {
-                    name: 'Game 3',
-                    data: [ ],
-                    visible: false
-
-                },
-                {
-                    name: 'Game 4',
+                    name: 'Previous Game',
                     data: [ ],
                     visible: false
                 },
@@ -347,8 +363,25 @@
                         }
                         if (b.checked) {
                             console.log("checked");
+                            var game = {{ game.id }};
+                                console.log(game);
+                                var x = 0;
+                                switch (game) {
+                                    case 1:
+                                        // Need to generate a message to say this was the first game
+                                        break;
+                                    case 2:
+                                        x = {{ quarter_yardage_totals.0 }};
+                                        break;
+                                    case 3:
+                                        x = {{ quarter_yardage_totals.1 }};
+                                        break;
+                                    case 4:
+                                        x = {{ quarter_yardage_totals.2 }};
+                                        break;
+                                }
                             for (var z=1; z < chart.series.length-1;z++) {
-                                var yards = [83, 73, 94, 51];
+                                var yards = x;
                                 chart.series[z].show();
 
 
