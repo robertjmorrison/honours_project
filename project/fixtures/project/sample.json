@@ -22,7 +22,10 @@
       "team": 1,
       "date_time": "2016-01-01 15:00",
       "opponent": "Iowa Hawk-Eyes",
-      "venue": "N"
+      "venue": "N",
+      "result": "W",
+      "points_for": 45,
+      "points_against": 16
     }
   },
   {
@@ -30,9 +33,12 @@
     "pk": 2,
     "fields": {
       "team": 1,
-      "date_time": "2016-09-14 14:30",
-      "opponent": "Alabama Crimson Tide",
-      "venue": "H"
+      "date_time": "2015-09-25 19:00",
+      "opponent": "Oregon State Beavers",
+      "venue": "A",
+      "result": "W",
+      "points_for": 42,
+      "points_against": 24
     }
   },
   {
@@ -56,7 +62,7 @@
       "yard_line": "25",
       "quarter": "1",
       "time": "14:49",
-      "gain": "75",
+      "gain": 75,
       "complete": "True",
       "outcome": "TD",
       "passer": 1,
@@ -69,7 +75,8 @@
       "note": "Bad footwork: QB should keep plant leg on the ground when throwing",
       "route": "Seam",
       "play": " ",
-      "speed": "16.74"
+      "speed": "16.74",
+      "position": "RB"
     }
   },
   {
@@ -260,7 +267,7 @@
       "complete": "False",
       "outcome": "PA",
       "passer": 1,
-      "receiver": 7,
+      "receiver": 10,
       "vid_url": "//streamable.com/e/3y23g/psonoi"
     }
   },
@@ -516,37 +523,391 @@
     "pk": 23,
     "fields": {
       "game": 2,
-      "down": "3",
-      "distance": "8",
+      "down": "2",
+      "distance": "5",
       "field_half": "OPP",
-      "yard_line": "37",
-      "quarter": "4",
-      "time": "10:22",
-      "gain": "12",
-      "complete": "True",
+      "yard_line": "46",
+      "quarter": "1",
+      "time": "13:43",
+      "gain": "0",
+      "complete": "False",
       "outcome": "PA",
       "passer": 1,
-      "receiver": 3,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": "",
+      "route": "Comeback",
+      "play": " ",
+      "speed": "14.72",
+      "position": "WR"
     }
   },
   {
     "model": "project.Play",
     "pk": 24,
     "fields": {
-      "game": 3,
+      "game": 2,
+      "down": "3",
+      "distance": "4",
+      "field_half": "OPP",
+      "yard_line": "18",
+      "quarter": "1",
+      "time": "11:45",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": "Bad footwork: QB should keep plant leg on the ground when throwing",
+      "route": "Seam",
+      "play": " ",
+      "speed": "12.45",
+      "position": "ST"
+
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 25,
+    "fields": {
+      "game": 2,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "45",
+      "quarter": "1",
+      "time": "07:45",
+      "gain": "-5",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 4,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": -5,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "3.12",
+      "position": "ST"
+
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 26,
+    "fields": {
+      "game": 2,
+      "down": "2",
+      "distance": "15",
+      "field_half": "OWN",
+      "yard_line": "40",
+      "quarter": "1",
+      "time": "07:30",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 4,
+      "note": " ",
+      "route": "Out",
+      "play": " ",
+      "speed": "7.56",
+      "position": "TE"
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 27,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "9",
+      "field_half": "OWN",
+      "yard_line": "46",
+      "quarter": "1",
+      "time": "06:48",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "INT",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Seam",
+      "play": " ",
+      "speed": "8.94",
+      "position": "WR"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 28,
+    "fields": {
+      "game": 2,
       "down": "1",
       "distance": "10",
       "field_half": "OPP",
-      "yard_line": "41",
+      "yard_line": "42",
+      "quarter": "1",
+      "time": "01:20",
+      "gain": "42",
+      "complete": "True",
+      "outcome": "TD",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 31,
+      "note": " ",
+      "route": "Post",
+      "play": " ",
+      "speed": "14.75",
+      "position": "TE"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 29,
+    "fields": {
+      "game": 2,
+      "down": "2",
+      "distance": "7",
+      "field_half": "OWN",
+      "yard_line": "42",
       "quarter": "2",
-      "time": "10:22",
-      "gain": "12",
+      "time": "11:35",
+      "gain": "8",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 7,
+      "note": " ",
+      "route": "Out",
+      "play": " ",
+      "speed": "7.44",
+      "position": "TE"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 30,
+    "fields": {
+      "game": 1,
+      "down": "10",
+      "distance": "9",
+      "field_half": "OWN",
+      "yard_line": "50",
+      "quarter": "2",
+      "time": "11:01",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "16.48",
+      "position": "WR"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 31,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OPP",
+      "yard_line": "48",
+      "quarter": "2",
+      "time": "10:15",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "13.40",
+      "position": "ST"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 32,
+    "fields": {
+      "game": 2,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "43",
+      "quarter": "2",
+      "time": "04:45",
+      "gain": "38",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 12,
+      "note": " ",
+      "route": "Seam",
+      "play": " ",
+      "speed": "16.40",
+      "position": "RB"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 33,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "7",
+      "field_half": "OPP",
+      "yard_line": "7",
+      "quarter": "3",
+      "time": "12:57",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Corner",
+      "play": " ",
+      "speed": "9.32",
+      "position": "WR"
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 34,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "1",
+      "field_half": "OWN",
+      "yard_line": "28",
+      "quarter": "3",
+      "time": "09:05",
+      "gain": "4",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 4,
+      "note": " ",
+      "route": "Hitch",
+      "play": " ",
+      "speed": "04.27",
+      "position": "ST"
+    }
+  },
+   {
+    "model": "project.Play",
+    "pk": 35,
+    "fields": {
+      "game": 2,
+      "down": "2",
+      "distance": "6",
+      "field_half": "OWN",
+      "yard_line": "36",
+      "quarter": "3",
+      "time": "08:20",
+      "gain": "9",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 9,
+      "note": " ",
+      "route": "Comeback",
+      "play": " ",
+      "speed": "9.64",
+      "position": "WR"
+    }
+  },
+   {
+    "model": "project.Play",
+    "pk": 36,
+    "fields": {
+      "game": 2,
+      "down": "2",
+      "distance": "4",
+      "field_half": "OPP",
+      "yard_line": "49",
+      "quarter": "3",
+      "time": "06:42",
+      "gain": "49",
       "complete": "True",
       "outcome": "TD",
       "passer": 1,
       "receiver": 7,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 35,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "13.27",
+      "position": "WR"
+    }
+  },
+     {
+    "model": "project.Play",
+    "pk": 37,
+    "fields": {
+      "game": 2,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OWN",
+      "yard_line": "38",
+      "quarter": "4",
+      "time": "10:00",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "15.97",
+      "position": "WR"
     }
   },
   {
@@ -557,7 +918,10 @@
       "second_name": "Hogan",
       "jersey_no": "8",
       "imageUrl": "https://www.daddyleagues.com/img/nfl/madden17/8054.png",
-      "team": 1
+      "team": 1,
+      "feet": 6,
+      "inches": 3,
+      "pounds": 218
     }
   },
   {
@@ -567,7 +931,7 @@
       "first_name": "Christian",
       "second_name": "McCaffrey",
       "jersey_no": "5",
-      "imageUrl": "noimg",
+      "imageUrl": "project/img/2557997.jpg",
       "team": 1
     }
   },
@@ -630,17 +994,6 @@
     "model": "project.Player",
     "pk": 8,
     "fields": {
-      "first_name": "Isaiah",
-      "second_name": "Brandt-Sims",
-      "jersey_no": "89",
-      "imageUrl": "noimg",
-      "team": 1
-    }
-  },
-  {
-    "model": "project.Player",
-    "pk": 8,
-    "fields": {
       "first_name": "Austin",
       "second_name": "Hooper",
       "jersey_no": "14",
@@ -655,6 +1008,17 @@
       "first_name": "Francis",
       "second_name": "Owusu",
       "jersey_no": "33",
+      "imageUrl": "noimg",
+      "team": 1
+    }
+  },
+    {
+    "model": "project.Player",
+    "pk": 10,
+    "fields": {
+      "first_name": "Isaiah",
+      "second_name": "Brandt-Sims",
+      "jersey_no": "89",
       "imageUrl": "noimg",
       "team": 1
     }
