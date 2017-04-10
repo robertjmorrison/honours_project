@@ -6,6 +6,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.forms import ModelForm
 
 
+def __getitem__(self,index):
+    return self.bricks.bricksId[index]
+
+
+def __setitem__(self,index,value):
+    self.bricks.bricksId[index] = value
+
+
 def index(request):
     game_list = Game.objects.order_by('-date_time')
 
@@ -30,6 +38,8 @@ def session(request, game_id, play_id=1, team_id=1):
     w, h = game_list.count()+1, 4
     prev_game_plays = [[Play() for x in range(w)] for y in range(h)]
     quarter_yardage_totals = [[0 for x in range(w)] for y in range(h)]
+    prev_game_comp = [[0 for x in range(w)] for y in range(h)]
+    prev_game_att = [[0 for x in range(w)] for y in range(h)]
 
     r = play_detail.receiver
     receiver_performance = [0, 0, 0, 0]  # targets, catches, yards, touchdowns
@@ -54,6 +64,39 @@ def session(request, game_id, play_id=1, team_id=1):
         for i in range(4):
             prev_game_plays[z][i] = list(Play.objects.filter(game=str(z + 1), quarter=i+1).values_list('id', flat=True))
             quarter_yardage_totals[z][i] = sum(Play.objects.filter(game=str(z + 1), quarter=i+1).values_list('gain', flat=True))
+            prev_game_comp[z][i] = sum(Play.objects.filter(game=str(z + 1), quarter=i+1, complete=True).values_list('complete', flat=True))
+            prev_game_att[z][i] = sum((Play.objects.filter(game=str(z + 1), quarter=i+1).exclude(outcome="SK").values_list('passer', flat=True)))
+
+    season_avg_comp = [0, 0, 0, 0]
+    season_total_att = [0, 0, 0, 0]
+    season_avg_pct = [0, 0, 0, 0]
+    season_total_comp = [0, 0, 0, 0]
+    season_avg_att = [0, 0, 0, 0]
+    season_ypa = [0, 0, 0, 0]
+
+    for g in range(game_list.count()):
+        season_avg_comp[0] += prev_game_comp[g][0]
+        season_avg_comp[1] += prev_game_comp[g][1]
+        season_avg_comp[2] += prev_game_comp[g][2]
+        season_avg_comp[3] += prev_game_comp[g][3]
+        season_total_att[0] += prev_game_att[g][0]
+        season_total_att[1] += prev_game_att[g][1]
+        season_total_att[2] += prev_game_att[g][2]
+        season_total_att[3] += prev_game_att[g][3]
+        season_total_comp[0] += prev_game_comp[g][0]
+        season_total_comp[1] += prev_game_comp[g][1]
+        season_total_comp[2] += prev_game_comp[g][2]
+        season_total_comp[3] += prev_game_comp[g][3]
+
+    prev_game_pct = [[0 for x in range(w)] for y in range(h)]
+    for g in range(game_list.count()):
+        for i in range(4):
+            if prev_game_att[g][i] != 0:
+                prev_game_pct[g][i] = round(((prev_game_comp[g][i] / prev_game_att[g][i]) * 100), 1)
+                season_avg_pct[i] = round(((season_total_comp[i] / season_total_att[i]) * 100), 1)
+
+    for a in range(4):
+        season_avg_comp[a] = round((season_avg_comp[a] / game_list.count()), 1)
 
     # for each element of team_game
     # find all plays in play_list that share the game ID
@@ -81,12 +124,16 @@ def session(request, game_id, play_id=1, team_id=1):
     avg_q3yards = round(q3yards / game_list.count(), 0)
     avg_q4yards = round(q4yards / game_list.count(), 0)
 
+    season_ypa[0] = round((avg_q1yards / season_total_att[0]), 1)
+
     avg_yards_cum = [0, 0, 0, 0]
 
     avg_yards_cum[0] = avg_q1yards
     avg_yards_cum[1] = avg_yards_cum[0] + avg_q2yards
     avg_yards_cum[2] = avg_yards_cum[1] + avg_q3yards
     avg_yards_cum[3] = avg_yards_cum[2] + avg_q4yards
+
+
 
     play_tagline = "%s-yard %s at %s %s (Q%s %s)" % (play_detail.gain, play_detail.outcome, play_detail.field_half,
                                                      play_detail.yard_line, play_detail.quarter, play_detail.time)
@@ -226,7 +273,13 @@ def session(request, game_id, play_id=1, team_id=1):
         'quarter_yardage_totals': quarter_yardage_totals,
         'receiver_performance': receiver_performance,
         'routes': routes,
-        'fav': fav
+        'fav': fav,
+        'prev_game_comp': prev_game_comp,
+        'prev_game_att': prev_game_att,
+        'season_avg_comp': season_avg_comp,
+        'season_total_att': season_total_att,
+        'prev_game_pct': prev_game_pct,
+        'season_avg_pct': season_avg_pct
     }
     return render(request, 'project/session.html', context)
 

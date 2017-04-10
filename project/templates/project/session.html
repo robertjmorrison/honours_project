@@ -240,11 +240,7 @@
                         {{ o.venue }}
                     {% endfor %}
 
-                {{ gains }}
-
-                    {{ q1yards }} {{ q2yards }} {{ q3yards }} {{ q4yards }} <br>
-                {{ avg_q1yards }} {{ avg_q2yards }} {{ avg_q3yards }} {{ avg_q4yards }}
-
+                {{ season_total_att }}
 
 
                 </form>
@@ -419,12 +415,25 @@
                         }
                         if (b.checked) {
                             console.log("checked");
+                            var yards = [0, 0, 0, 0];
+                            var game = {{ game.id }};
+                            switch (game) {
+                                    case 1:
+                                        // Need to generate a message to say this was the first game
+                                        break;
+                                    case 2:
+                                        yards = [{{ quarter_yardage_totals.0.0 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }} + {{ quarter_yardage_totals.0.3 }}];
+                                        break;
+                                    case 3:
+                                        yards = [{{ quarter_yardage_totals.1.0 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }} + {{ quarter_yardage_totals.1.3 }}];
+                                        break;
+                                    case 4:
+                                        yards = [{{ quarter_yardage_totals.2.0 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }} + {{ quarter_yardage_totals.2.3 }}];
+                                        break;
+                                }
                             for (var z=1; z < chart.series.length-1;z++) {
-                                var yards = [83, 73, 94, 51];
                                 chart.series[z].show();
-
-
-                            chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
                             }
                         }
                         else {
@@ -439,18 +448,147 @@
                         chart.series[0].setData({{ totalcomp }} );
                         chart.yAxis[0].setExtremes(0, null);
                         chart.yAxis[0].setTitle({text: "Total Completions"});
+
+                        var a = document.getElementById("season-avg");
+                        var b = document.getElementById("prev-games");
+                        if (a.checked) {
+                            console.log('season avg');
+                            var avg = chart.series.length-1;
+                            console.log(avg);
+                            chart.series[avg].show();
+                            chart.series[avg].setData({{ season_avg_comp }}, false);
+                        }
+                        else {
+                            chart.series[chart.series.length-1].hide();
+                        }
+                        if (b.checked) {
+                            console.log("checked");
+                            var yards = [0, 0, 0, 0];
+                            var game = {{ game.id }};
+
+                            switch(game) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    yards = {{ prev_game_comp.0 }};
+                                    break;
+                                case 3:
+                                    yards = {{ prev_game_comp.1 }};
+                                    break;
+                                case 4:
+                                    yards = {{ prev_game_comp.2 }};
+                                    break;
+                            }
+
+                            for (var z=1; z < chart.series.length-1;z++) {
+                                chart.series[z].show();
+                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                            }
+                        }
+                        else {
+                            for (var u=1;u < chart.series.length-1;u++) {
+                                chart.series[u].hide();
+                                chart.redraw();
+                            }
+                        }
                     }
                     else if (val == 4) {
                         console.log("comp %");
                         chart.series[0].setData({{ q_pct }} );
                         chart.yAxis[0].setExtremes(0, 100);
                         chart.yAxis[0].setTitle({text: "Completion Percentage"});
+
+                        var a = document.getElementById("season-avg");
+                        var b = document.getElementById("prev-games");
+                        if (a.checked) {
+                            console.log('season avg');
+                            var avg = chart.series.length-1;
+                            console.log(avg);
+                            chart.series[avg].show();
+                            chart.series[avg].setData({{ season_avg_pct }}, false);
+                        }
+                        else {
+                            chart.series[chart.series.length-1].hide();
+                        }
+                        if (b.checked) {
+                            console.log("checked");
+                            var yards = [0, 0, 0, 0];
+                            var game = {{ game.id }};
+
+                            switch(game) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    yards = {{ prev_game_pct.0 }};
+                                    break;
+                                case 3:
+                                    yards = {{ prev_game_pct.1 }};
+                                    break;
+                                case 4:
+                                    yards = {{ prev_game_pct.2 }};
+                                    break;
+                            }
+
+                            for (var z=1; z < chart.series.length-1;z++) {
+                                chart.series[z].show();
+                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                            }
+                        }
+                        else {
+                            for (var u=1;u < chart.series.length-1;u++) {
+                                chart.series[u].hide();
+                                chart.redraw();
+                            }
+                        }
                     }
                     else if (val == 5) {
                         console.log("yards per dropback");
                         chart.series[0].setData({{ q_ypa }});
                         chart.yAxis[0].setExtremes(0, null);
                         chart.yAxis[0].setTitle({text: "Yards per Dropback"});
+
+                        var a = document.getElementById("season-avg");
+                        var b = document.getElementById("prev-games");
+                        if (a.checked) {
+                            console.log('season avg');
+                            var avg = chart.series.length-1;
+                            console.log(avg);
+                            chart.series[avg].show();
+                            chart.series[avg].setData({{ season_avg_pct }}, false);
+                        }
+                        else {
+                            chart.series[chart.series.length-1].hide();
+                        }
+                        if (b.checked) {
+                            console.log("checked");
+                            var yards = [0, 0, 0, 0];
+                            var game = {{ game.id }};
+
+                            switch(game) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    yards = {{ prev_game_pct.0 }};
+                                    break;
+                                case 3:
+                                    yards = {{ prev_game_pct.1 }};
+                                    break;
+                                case 4:
+                                    yards = {{ prev_game_pct.2 }};
+                                    break;
+                            }
+
+                            for (var z=1; z < chart.series.length-1;z++) {
+                                chart.series[z].show();
+                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                            }
+                        }
+                        else {
+                            for (var u=1;u < chart.series.length-1;u++) {
+                                chart.series[u].hide();
+                                chart.redraw();
+                            }
+                        }
                     }
                     chart.redraw();
                 }
