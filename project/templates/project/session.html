@@ -3,7 +3,11 @@
 {% load staticfiles %}
 {% block content %}
 <div class="col-sm-12">
-    <h2>Stanford Cardinal vs {{game.opponent }}</h2>
+<div class="row">
+<div class="col-sm-8">
+    <h2>Stanford Cardinal vs {{game.opponent }}</h2></div>
+    <div class="col-sm-4"><a href="#" id="analysis-link" onclick="showAnalysis()">Switch To Graphical Analysis</a><a href="#" id="video-link" class="hidden" onclick="showVideo()">Switch To Video Analysis</a>
+</div></div>
 
     <h4> {{ game.date_time.date }}, {{ game.result }} ({{ game.points_for }}-{{ game.points_against }})</h4>
     {% if play_list %}
@@ -36,8 +40,7 @@
                         $('.average:contains("Above")').css('color', 'green').prepend("<span class='glyphicon glyphicon-arrow-up'></span> ");
                     </script>
                 </div>
-                <a href="#" id="analysis-link" onclick="showAnalysis()">Full Game Analysis ></a>
-            <a href="#" id="video-link" class="hidden" onclick="showVideo()">Back to Video Analysis</a>
+
             </div>
         </div>
             </div><br>

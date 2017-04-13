@@ -231,9 +231,7 @@ def session(request, game_id, play_id=1, team_id=1):
 
     pct_diff = avg_comp - pct
 
-    yac = 0
-    if play_detail.air_yards:
-        yac = play_detail.gain - play_detail.air_yards
+    yac = play_detail.gain - play_detail.air_yards
     context = {
         'game': game,
         'play_list': play_list,

@@ -46,9 +46,12 @@
     "pk": 3,
     "fields": {
       "team": 1,
-      "date_time": "2016-09-14 14:30",
-      "opponent": "Boise State Broncos",
-      "venue": "A"
+      "date_time": "2015-09-05 12:00",
+      "opponent": "Northwestern Wildcats",
+      "venue": "A",
+      "result": "L",
+      "points_for": 6,
+      "points_against": 16
     }
   },
   {
@@ -95,7 +98,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 3,
-      "vid_url": "//streamable.com/e/smmoc/hslva"
+      "vid_url": "//streamable.com/e/smmoc/hslva",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Corner",
+      "play": " ",
+      "speed": "12.46",
+      "position": "ST"
     }
   },
   {
@@ -115,7 +125,14 @@
       "passer": 1,
       "receiver": 2,
       "vid_url": "//streamable.com/e/l9i1n/mlnjec",
-      "vid_url_alt": "//streamable.com/e/5dfxn/kfthl"
+      "vid_url_alt": "//streamable.com/e/5dfxn/kfthl",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "8.92",
+      "position": "WR"
     }
   },
   {
@@ -134,7 +151,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 4,
-      "vid_url": "//streamable.com/e/ero4i/mlhkhe"
+      "vid_url": "//streamable.com/e/ero4i/mlhkhe",
+      "accurate": "True",
+      "air_yards": -1,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "2.54",
+      "position": "ST"
     }
   },
   {
@@ -153,7 +177,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 5,
-      "vid_url": "//streamable.com/e/32cpt/vzmgll"
+      "vid_url": "//streamable.com/e/32cpt/vzmgll",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "14.01",
+      "position": "WR"
     }
   },
   {
@@ -172,7 +203,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 5,
-      "vid_url": "//streamable.com/e/vgumr/ijltdb"
+      "vid_url": "//streamable.com/e/vgumr/ijltdb",
+      "accurate": "True",
+      "air_yards": 6,
+      "note": " ",
+      "route": "Out",
+      "play": " ",
+      "speed": "7.61",
+      "position": "TE"
     }
   },
   {
@@ -191,7 +229,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 5,
-      "vid_url": "//streamable.com/e/1yexf/rzzjdk"
+      "vid_url": "//streamable.com/e/1yexf/rzzjdk",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "12.47",
+      "position": "ST"
     }
   },
   {
@@ -211,7 +256,14 @@
       "passer": 1,
       "receiver": 7,
       "vid_url": "//streamable.com/e/2mzcj/plvjbc",
-      "vid_url_alt": "//streamable.com/e/q3ozo/cosrow"
+      "vid_url_alt": "//streamable.com/e/q3ozo/cosrow",
+      "accurate": "True",
+      "air_yards": 31,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "17.46",
+      "position": "WR"
     }
   },
   {
@@ -230,7 +282,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 2,
-      "vid_url": "//streamable.com/e/ytvfn/gszbsg"
+      "vid_url": "//streamable.com/e/ytvfn/gszbsg",
+      "accurate": "True",
+      "air_yards": -2,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "14.23",
+      "position": "RB"
     }
   },
   {
@@ -249,7 +308,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 7,
-      "vid_url": "//streamable.com/e/yfk4m/nhvxsp"
+      "vid_url": "//streamable.com/e/yfk4m/nhvxsp",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Post",
+      "play": " ",
+      "speed": "16.43",
+      "position": "ST"
     }
   },
   {
@@ -268,7 +334,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 10,
-      "vid_url": "//streamable.com/e/3y23g/psonoi"
+      "vid_url": "//streamable.com/e/3y23g/psonoi",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "15.32",
+      "position": "WR"
     }
   },
   {
@@ -287,7 +360,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 8,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 6,
+      "note": " ",
+      "route": "Slant",
+      "play": " ",
+      "speed": "11.43",
+      "position": "ST"
     }
   },
   {
@@ -306,7 +386,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 5,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Corner",
+      "play": " ",
+      "speed": "14.98",
+      "position": "ST"
     }
   },
   {
@@ -325,7 +412,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 9,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "0.58",
+      "position": "ST"
     }
   },
   {
@@ -344,7 +438,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 8,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 4,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "7.86",
+      "position": "TE"
     }
   },
   {
@@ -363,7 +464,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 7,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Comeback",
+      "play": " ",
+      "speed": "7.48",
+      "position": "ST"
     }
   },
   {
@@ -382,7 +490,14 @@
       "outcome": "SK",
       "passer": 1,
       "receiver": 7,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": "0.00",
+      "position": ""
     }
   },
   {
@@ -401,12 +516,19 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 8,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 6,
+      "note": " ",
+      "route": "Hitch",
+      "play": " ",
+      "speed": "9.41",
+      "position": "TE"
     }
   },
   {
     "model": "project.Play",
-    "pk": 18,
+    "pk": 38,
     "fields": {
       "game": 1,
       "down": "3",
@@ -420,12 +542,19 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 3,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Post",
+      "play": " ",
+      "speed": "13.60",
+      "position": "WR"
     }
   },
   {
     "model": "project.Play",
-    "pk": 18,
+    "pk": 39,
     "fields": {
       "game": 1,
       "down": "3",
@@ -439,12 +568,19 @@
       "outcome": "INT",
       "passer": 1,
       "receiver": 3,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": "Post",
+      "play": " ",
+      "speed": "14.81",
+      "position": "ST"
     }
   },
   {
     "model": "project.Play",
-    "pk": 19,
+    "pk": 40,
     "fields": {
       "game": 1,
       "down": "1",
@@ -458,7 +594,14 @@
       "outcome": "PA",
       "passer": 1,
       "receiver": 2,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 2,
+      "note": " ",
+      "route": "Screen",
+      "play": " ",
+      "speed": "14.71",
+      "position": "RB"
     }
   },
   {
@@ -477,45 +620,14 @@
       "outcome": "TD",
       "passer": 1,
       "receiver": 7,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
-    }
-  },
-    {
-    "model": "project.Play",
-    "pk": 21,
-    "fields": {
-      "game": 1,
-      "down": "1",
-      "distance": "10",
-      "field_half": "OWN",
-      "yard_line": "30",
-      "quarter": "4",
-      "time": "12:56",
-      "gain": "6",
-      "complete": "True",
-      "outcome": "PA",
-      "passer": 1,
-      "receiver": 8,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
-    }
-  },
-      {
-    "model": "project.Play",
-    "pk": 22,
-    "fields": {
-      "game": 1,
-      "down": "3",
-      "distance": "8",
-      "field_half": "OPP",
-      "yard_line": "37",
-      "quarter": "4",
-      "time": "10:22",
-      "gain": "12",
-      "complete": "True",
-      "outcome": "PA",
-      "passer": 1,
-      "receiver": 3,
-      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas"
+      "vid_url": "https://gfycat.com/ifr/SevereZealousEyas",
+      "accurate": "True",
+      "air_yards": 36,
+      "note": " ",
+      "route": "Fade",
+      "play": " ",
+      "speed": "21.38",
+      "position": "WR"
     }
   },
   {
@@ -911,6 +1023,917 @@
     }
   },
   {
+    "model": "project.Play",
+    "pk": 41,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "11",
+      "field_half": "OWN",
+      "yard_line": "23",
+      "quarter": "1",
+      "time": "14:15",
+      "gain": "9",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 42,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "39",
+      "quarter": "1",
+      "time": "12:30",
+      "gain": "12",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 11,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 43,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "49",
+      "quarter": "1",
+      "time": "11:55",
+      "gain": "13",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 44,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "24",
+      "quarter": "1",
+      "time": "10:05",
+      "gain": "1",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 45,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "8",
+      "field_half": "OPP",
+      "yard_line": "12",
+      "quarter": "1",
+      "time": "08:37",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 46,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "12",
+      "field_half": "OWN",
+      "yard_line": "36",
+      "quarter": "1",
+      "time": "06:00",
+      "gain": "-2",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 47,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "43",
+      "quarter": "2",
+      "time": "13:00",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 11,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+      {
+    "model": "project.Play",
+    "pk": 48,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "7",
+      "field_half": "OWN",
+      "yard_line": "46",
+      "quarter": "2",
+      "time": "12:15",
+      "gain": "10",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 11,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+        {
+    "model": "project.Play",
+    "pk": 48,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "32",
+      "quarter": "2",
+      "time": "06:00",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+        {
+    "model": "project.Play",
+    "pk": 49,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "31",
+      "quarter": "2",
+      "time": "02:25",
+      "gain": "5",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 11,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+        {
+    "model": "project.Play",
+    "pk": 50,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "5",
+      "field_half": "OWN",
+      "yard_line": "36",
+      "quarter": "2",
+      "time": "01:38",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+        {
+    "model": "project.Play",
+    "pk": 51,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "37",
+      "quarter": "3",
+      "time": "12:41",
+      "gain": "0",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 8,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+        {
+    "model": "project.Play",
+    "pk": 52,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "37",
+      "quarter": "3",
+      "time": "12:36",
+      "gain": "10",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 11,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+   {
+    "model": "project.Play",
+    "pk": 53,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "30",
+      "quarter": "3",
+      "time": "09:35",
+      "gain": "7",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+     {
+    "model": "project.Play",
+    "pk": 54,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "14",
+      "field_half": "OWN",
+      "yard_line": "37",
+      "quarter": "3",
+      "time": "08:02",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+       {
+    "model": "project.Play",
+    "pk": 55,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "14",
+      "field_half": "OWN",
+      "yard_line": "37",
+      "quarter": "3",
+      "time": "07:55",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+       {
+    "model": "project.Play",
+    "pk": 56,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "25",
+      "quarter": "4",
+      "time": "12:15",
+      "gain": "13",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 57,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "38",
+      "quarter": "4",
+      "time": "11:45",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 58,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "25",
+      "quarter": "4",
+      "time": "11:30",
+      "gain": "9",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+    {
+    "model": "project.Play",
+    "pk": 59,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "50",
+      "quarter": "4",
+      "time": "10:30",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 12,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+     {
+    "model": "project.Play",
+    "pk": 60,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "36",
+      "quarter": "4",
+      "time": "08:46",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 1,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+   {
+    "model": "project.Play",
+    "pk": 61,
+    "fields": {
+      "game": 3,
+      "down": "4",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "36",
+      "quarter": "4",
+      "time": "08:40",
+      "gain": "10",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+   {
+    "model": "project.Play",
+    "pk": 62,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "26",
+      "quarter": "4",
+      "time": "08:13",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 13,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 62,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "26",
+      "quarter": "4",
+      "time": "08:07",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 7,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 63,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "26",
+      "quarter": "4",
+      "time": "08:00",
+      "gain": "6",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 12,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 64,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "28",
+      "quarter": "4",
+      "time": "03:30",
+      "gain": "4",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 65,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "6",
+      "field_half": "OPP",
+      "yard_line": "26",
+      "quarter": "4",
+      "time": "03:10",
+      "gain": "11",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 66,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "43",
+      "quarter": "4",
+      "time": "02:40",
+      "gain": "2",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 2,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 67,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "8",
+      "field_half": "OWN",
+      "yard_line": "45",
+      "quarter": "4",
+      "time": "02:27",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "SK",
+      "passer": 1,
+      "receiver": 1,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 68,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "10",
+      "field_half": "OWN",
+      "yard_line": "43",
+      "quarter": "4",
+      "time": "02:16",
+      "gain": "7",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 69,
+    "fields": {
+      "game": 3,
+      "down": "4",
+      "distance": "3",
+      "field_half": "OWN",
+      "yard_line": "50",
+      "quarter": "4",
+      "time": "02:09",
+      "gain": "16",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 70,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "34",
+      "quarter": "4",
+      "time": "01:55",
+      "gain": "11",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 5,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 71,
+    "fields": {
+      "game": 3,
+      "down": "1",
+      "distance": "10",
+      "field_half": "OPP",
+      "yard_line": "10",
+      "quarter": "4",
+      "time": "01:20",
+      "gain": "5",
+      "complete": "True",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 9,
+      "vid_url": " ",
+      "accurate": "True",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 72,
+    "fields": {
+      "game": 3,
+      "down": "2",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "5",
+      "quarter": "4",
+      "time": "01:05",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "PA",
+      "passer": 1,
+      "receiver": 1,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+  {
+    "model": "project.Play",
+    "pk": 62,
+    "fields": {
+      "game": 3,
+      "down": "3",
+      "distance": "5",
+      "field_half": "OPP",
+      "yard_line": "5",
+      "quarter": "4",
+      "time": "00:57",
+      "gain": "0",
+      "complete": "False",
+      "outcome": "INT",
+      "passer": 1,
+      "receiver": 1,
+      "vid_url": " ",
+      "accurate": "False",
+      "air_yards": 0,
+      "note": " ",
+      "route": " ",
+      "play": " ",
+      "speed": null,
+      "position": " "
+    }
+  },
+
+  {
     "model": "project.Player",
     "pk": 1,
     "fields": {
@@ -924,6 +1947,7 @@
       "pounds": 218
     }
   },
+
   {
     "model": "project.Player",
     "pk": 2,
@@ -1012,13 +2036,35 @@
       "team": 1
     }
   },
-    {
+  {
     "model": "project.Player",
     "pk": 10,
     "fields": {
       "first_name": "Isaiah",
       "second_name": "Brandt-Sims",
       "jersey_no": "89",
+      "imageUrl": "project/img/brandt-sims.jpg",
+      "team": 1
+    }
+  },
+      {
+    "model": "project.Player",
+    "pk": 11,
+    "fields": {
+      "first_name": "Rollins",
+      "second_name": "Stallworth",
+      "jersey_no": "89",
+      "imageUrl": "project/img/brandt-sims.jpg",
+      "team": 1
+    }
+  },
+      {
+    "model": "project.Player",
+    "pk": 12,
+    "fields": {
+      "first_name": "Greg",
+      "second_name": "Taboada",
+      "jersey_no": "41",
       "imageUrl": "project/img/brandt-sims.jpg",
       "team": 1
     }
