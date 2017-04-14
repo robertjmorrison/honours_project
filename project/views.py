@@ -6,14 +6,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.forms import ModelForm
 
 
-def __getitem__(self,index):
-    return self.bricks.bricksId[index]
-
-
-def __setitem__(self,index,value):
-    self.bricks.bricksId[index] = value
-
-
 def index(request):
     game_list = Game.objects.order_by('-date_time')
 
@@ -30,8 +22,12 @@ def session(request, game_id, play_id=1, team_id=1):
     # get the desired game
     game = get_object_or_404(Game, pk=game_id)
     # find all plays from that game
-    play_detail = get_object_or_404(Play, pk=play_id)
-    # play_list = game.play_set
+    first_play = game.play_set.first()
+    # workaround to load the correct play by default
+    if play_id == 1:
+        play_detail = get_object_or_404(Play, pk=first_play.id)
+    else:
+        play_detail = get_object_or_404(Play, pk=play_id)
     play_list = Play.objects.filter(game=game_id)
     other_games = Game.objects.exclude(pk=game_id).filter(team=team_id)
     all_plays = Play.objects.all()
@@ -44,6 +40,10 @@ def session(request, game_id, play_id=1, team_id=1):
     r = play_detail.receiver
     receiver_performance = [0, 0, 0, 0]  # targets, catches, yards, touchdowns
     routes = []
+    passer_routes = []
+    passer_routes_comp = []
+    pass_receivers = []
+    best_receivers = []
 
     for p in play_list:
         if p.receiver == r:
@@ -55,10 +55,27 @@ def session(request, game_id, play_id=1, team_id=1):
                 if p.outcome == 'TD':
                     receiver_performance[3] += 1
 
-    try:
-        fav = max(set(routes), key=routes.count)
-    except ValueError:
+    for p in play_list:
+        passer_routes.append(p.route)
+        pass_receivers.append(p.receiver)
+        if p.complete:
+            passer_routes_comp.append(p.route)
+            best_receivers.append(p.receiver)
+
         fav = "N/A"
+        qb_fav = "N/A"
+        qb_fav_comp = "N/A"
+        qb_fav_receiver = "N/A"
+        best_receiver = "N/A"
+        try:
+            fav = max(set(routes), key=routes.count)
+            qb_fav = max(set(passer_routes), key=passer_routes.count)
+            qb_fav_comp = max(set(passer_routes_comp), key=passer_routes_comp.count)
+            qb_fav_receiver = max(set(pass_receivers), key=pass_receivers.count)
+            best_receiver = max(set(best_receivers), key=best_receivers.count)
+        except ValueError:
+            pass
+
 
     for z in range(game_list.count()):
         for i in range(4):
@@ -87,6 +104,15 @@ def session(request, game_id, play_id=1, team_id=1):
         season_total_comp[1] += prev_game_comp[g][1]
         season_total_comp[2] += prev_game_comp[g][2]
         season_total_comp[3] += prev_game_comp[g][3]
+        if season_avg_att[0] != 0:
+            season_ypa[0] += (quarter_yardage_totals[g][0] / (season_total_att[0]/game_list.count()))
+        if season_avg_att[1] != 0:
+            season_ypa[1] += (quarter_yardage_totals[g][1] / (season_total_att[1]/game_list.count()))
+        if season_avg_att[2] != 0:
+            season_ypa[2] += (quarter_yardage_totals[g][2] / season_avg_att[2])
+        if season_avg_att[3] != 0:
+            season_ypa[3] += (quarter_yardage_totals[g][3] / season_avg_att[3])
+
 
     prev_game_pct = [[0 for x in range(w)] for y in range(h)]
     for g in range(game_list.count()):
@@ -94,6 +120,7 @@ def session(request, game_id, play_id=1, team_id=1):
             if prev_game_att[g][i] != 0:
                 prev_game_pct[g][i] = round(((prev_game_comp[g][i] / prev_game_att[g][i]) * 100), 1)
                 season_avg_pct[i] = round(((season_total_comp[i] / season_total_att[i]) * 100), 1)
+
 
     for a in range(4):
         season_avg_comp[a] = round((season_avg_comp[a] / game_list.count()), 1)
@@ -277,7 +304,12 @@ def session(request, game_id, play_id=1, team_id=1):
         'season_avg_comp': season_avg_comp,
         'season_total_att': season_total_att,
         'prev_game_pct': prev_game_pct,
-        'season_avg_pct': season_avg_pct
+        'season_avg_pct': season_avg_pct,
+        'qb_fav': qb_fav,
+        'qb_fav_comp': qb_fav_comp,
+        'qb_fav_receiver': qb_fav_receiver,
+        'best_receiver': best_receiver,
+        'season_ypa': season_ypa
     }
     return render(request, 'project/session.html', context)
 

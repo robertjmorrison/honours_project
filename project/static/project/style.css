@@ -118,7 +118,7 @@ body {
 }
 
 #quarters {
-    height: 200px;
+    height: 400px;
     overflow-y: scroll;
     list-style: decimal;
     
@@ -264,3 +264,8 @@ ol {
 	100% { opacity:100; }
 }
 
+.toggle-button {
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

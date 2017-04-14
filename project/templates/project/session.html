@@ -1,604 +1,559 @@
 {% extends 'project/base.html' %}
 {% include 'project/play.html' %}
 {% load staticfiles %}
+{% load humanize %}
 {% block content %}
 <div class="col-sm-12">
-<div class="row">
-<div class="col-sm-8">
-    <h2>Stanford Cardinal vs {{game.opponent }}</h2></div>
-    <div class="col-sm-4"><a href="#" id="analysis-link" onclick="showAnalysis()">Switch To Graphical Analysis</a><a href="#" id="video-link" class="hidden" onclick="showVideo()">Switch To Video Analysis</a>
-</div></div>
-
-    <h4> {{ game.date_time.date }}, {{ game.result }} ({{ game.points_for }}-{{ game.points_against }})</h4>
-    {% if play_list %}
-
-        <div class="col-md-3 zero-pad">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h4>Quarterback Profile</h4></div>
-        <div class="panel panel-body">
+   <div class="row">
+      <div class="col-sm-8">
+         <h2>Stanford Cardinal vs {{game.opponent }}</h2>
+      </div>
+      <div class="col-sm-4 toggle-button"><a class='ui-button ui-widget ui-corner-all' href="#" id="analysis-link" onclick="showAnalysis()">Switch To Graphical Analysis</a><a href="#" id="video-link" class="hidden ui-button ui-widget ui-corner-all" onclick="showVideo()">Switch To Video Analysis</a></div>
+   </div>
+   <h4> {{ game.date_time.date }}, {{ game.result }} ({{ game.points_for }}-{{ game.points_against }})</h4>
+   {% if play_list %}
+   <div class="col-md-3 zero-pad">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <h4>Quarterback Profile</h4>
+         </div>
+         <div class="panel panel-body">
             <div class="row">
-                <div class="col-sm-6 qb">
-                    <img class="qb" src="{{ play_detail.passer.imageUrl }}">
-                    <p>{{ play_detail.passer }} #{{ play_detail.passer.jersey_no }}</p>
-                    <p>{{ play_detail.passer.feet }}' {{ play_detail.passer.inches }}" / {{ play_detail.passer.pounds }}lbs</p>
-                </div>
-                <div class="help-tip">
-	                <p>The average completion percentage across all Quarterbacks in NCAA-I is 61%.<br>
-                    <br>The average yards per game across all Quarterbacks in NCAA-I is 257 yards.<br>
-                    <br>'QBR', short for Quarterback Rating (also known as Passer Rating) is a formula intended to represent all facets of passing effectiveness in a single figure. For the NCAA formula, the minimum is −731.6 and the maximum is 1,261.6.</p>
-                </div>
-                <div class="col-sm-6">
-                    <h4>Game Statistics</h4>
-                    <p>{{ comp_count }}/{{ total_plays }} ({{ pct }}%)</p>
-                    <p class="average">{{ avg_comp_statement }}</p>
-                    <p>{{ yards }} Yards</p>
-                    <p class="average">{{ avg_yards_statement }}</p>
-                    <p>{{ td }} TD, {{ interceptions }} INT</p>
-                    <p>QBR: {{ ncaa_rating }}</p>
-                    <script>
-                        $('.average:contains("Below")').css('color', 'red').prepend("<span class='glyphicon glyphicon-arrow-down'></span> ");
-                        $('.average:contains("Above")').css('color', 'green').prepend("<span class='glyphicon glyphicon-arrow-up'></span> ");
-                    </script>
-                </div>
-
-            </div>
-        </div>
-            </div><br>
-
-        <div class="panel panel-default">
-            <div class="panel-heading"><h4>Choose A Play</h4></div>
-        <div class="row">
-
-
-
-
-
-            <div class="col-md-12  panel-body" id="quarters">
-<ol>
-                    <div id ="quarter1">
-                        <span class="strong">Quarter 1</span>
-                    </div>
-                    <div id ="quarter2">
-<span class="strong">Quarter 2</span>
-                    </div>
-                    <div id ="quarter3">
-<span class="strong">Quarter 3</span>
-                    </div>
-                    <div id ="quarter4">
-<span class="strong">Quarter 4</span>
-                    </div>
-</ol>
-
-                                    <div id="q1_inspect" title="Quarter 1">
-                    <ol></ol>
-                </div>
-                <div id="q2_inspect" title="Quarter 2">
-                    <ol></ol>
-                </div>
-                <div id="q3_inspect" title="Quarter 3">
-                    <ol></ol>
-                </div>
-                <div id="q4_inspect" title="Quarter 4">
-                    <ol></ol>
-                </div>
-                                <script>
-                    $("#q1_inspect").dialog({ autoOpen: false });
-                    $("#q2_inspect").dialog({ autoOpen: false });
-                    $("#q3_inspect").dialog({ autoOpen: false });
-                    $("#q4_inspect").dialog({ autoOpen: false });
-                </script>
-                        </div>
-                {% for play in play_list.all %}
-                {% if play.quarter == 1 %}
-                <script>
-                    $("#quarter1").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-                    $("#q1_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-                </script>
-                {% endif %}
-                {% if play.quarter == 2 %}
-                <script>
-                    $("#quarter2").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-                    $("#q2_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-
-                </script>
-                {% endif %}
-                {% if play.quarter == 3 %}
-                <script>
-                    $("#quarter3").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-                    $("#q3_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-
-                </script>
-                {% endif %}
-                {% if play.quarter == 4 %}
-                <script>
-                    $("#quarter4").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-                    $("#q4_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
-
-                </script>
-                {% endif %}
-                {% endfor %}
-
-        </div>
-        </div>
-            <div class="col-m2-12 hidden" id="breakdown-vids">
-
-            </div>
-        </div>
-        <div class="col-sm-9" id="video-plays">
-            <div class="col-md-8">
-                <!--iframe width="100%" height="315" src="https://www.youtube.com/embed/hHQ9Fiiqu8k" frameborder="0" allowfullscreen></iframe-->
-                <!-- Video Clips -->
-                <div id="tabs">
-                    <ul>
-                        <li><a href="#tabs-1">Main View</a></li>
-                        <li><a href="#tabs-2">Alternative View #1</a></li>
-                        <li><a href="#tabs-3">Alternative View #2</a></li>
-                    </ul>
-                    <div id="tabs-1">
-                        <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url }}?autoplay=1' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-                    </div>
-                    <div id="tabs-2">
-                        <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url_alt }}' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-                    </div>
-                    <div id="tabs-3">
-                        <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url_alt2 }}' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
-                    </div>
-                    <p><a href="#"><span class="glyphicon glyphicon-plus"></span>Add a Note</a></p>
-                    <p>{{ play_detail.note }}</p>
-                </div>
-                <p></p>
-                <!-- Charts -->
-            </div>
-
-            <div class="col-sm-4 zero-pad panel panel-default">
-                <div class="panel-heading"><h4>Receiver</h4></div>
-                <div class="panel-body">
-                <h4>{{ play_tagline }}</h4>
-                    <div class="row">
+               <div class="col-sm-6 qb">
+                  <img class="qb" src="{{ play_detail.passer.imageUrl }}">
+                  <p>{{ play_detail.passer }} #{{ play_detail.passer.jersey_no }}</p>
+                  <p>{{ play_detail.passer.feet }}' {{ play_detail.passer.inches }}" / {{ play_detail.passer.pounds }}lbs</p>
+               </div>
+               <div class="help-tip">
+                  <p>The average completion percentage across all Quarterbacks in NCAA-I is 61%.<br>
+                     <br>The average yards per game across all Quarterbacks in NCAA-I is 257 yards.<br>
+                     <br>'QBR', short for Quarterback Rating (also known as Passer Rating) is a formula intended to represent all facets of passing effectiveness in a single figure. For the NCAA formula, the minimum is −731.6 and the maximum is 1,261.6.
+                  </p>
+               </div>
+               <div class="col-sm-6">
+                  <h4>Game Statistics</h4>
+                  <p>{{ comp_count }}/{{ total_plays }} ({{ pct }}%)</p>
+                  <p class="average">{{ avg_comp_statement }}</p>
+                  <p>{{ yards }} Yards</p>
+                  <p class="average">{{ avg_yards_statement }}</p>
+                  <p>{{ td }} TD, {{ interceptions }} INT</p>
+                  <p>QBR: {{ ncaa_rating }}</p>
+                  <script>
+                     $('.average:contains("Below")').css('color', 'red').prepend("<span class='glyphicon glyphicon-arrow-down'></span> ");
+                     $('.average:contains("Above")').css('color', 'green').prepend("<span class='glyphicon glyphicon-arrow-up'></span> ");
+                  </script>
+               </div>
                 <div class="col-sm-12">
-                    <p class="strong">#{{ play_detail.receiver.jersey_no }} {{ play_detail.receiver }}</p></div>
-                    <div class="col-sm-6">
-                        <p>Best Route: {{ fav }}</p>
-                        <p>{{ receiver_performance.0 }} Targets</p>
-                        <p>{{ receiver_performance.1 }} Catches</p>
-                        <p>{{ receiver_performance.2 }} Rec. Yards</p>
-                        <p>{{ receiver_performance.3 }} TD</p>
-                    </div>
-                                            <div class="col-sm-6 qb">
-                    <img class="qb" src="{% static play_detail.receiver.imageUrl %}">
-                    </div>
-                    </div>
-                    <br>
+                    <p>Most Attempted Route: {{ qb_fav }}</p>
+                    <p>Most Completed Route: {{ qb_fav_comp }}</p>
+                    <p>Favourite Receiver: {{ qb_fav_receiver }}</p>
+                    <p>Best Receiver: {{ best_receiver }}</p>
 
-                <p>Receiver was lined up as a {{ play_detail.position }}, catching a {{ play_detail.air_yards }}-yard {{ play_detail.route }} route and gained {{ yac }} additional yards after the catch, reaching a top speed of {{ play_detail.speed }}mph</p>
-                <div id="airyards" style="max-width: 310px; height: 400px; margin: 0 auto"></div>
-                <script>
-                    Highcharts.chart('airyards', {
-                        chart: {
-                            type: 'column'
-                        },
-                        title: {
-                            text: 'Air Yards vs YAC'
-                        },
-                        xAxis: {
-                            categories: ['Apples']
-                        },
-                        yAxis: {
-                            min: 0,
-                            title: {
-                                text: 'Total Yards'
-                            }
-                        },
-                        tooltip: {
-                            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-                            shared: true
-                        },
-                        plotOptions: {
-                            column: {
-                                stacking: 'normal'
-                            }
-                        },
-                        series: [{
-                            name: 'YAC',
-                            data: [{{ play_detail.gain }} - {{ play_detail.air_yards }}]
-                        },
-                        {
-                            name: 'Air Yards',
-                            data: [{{ play_detail.air_yards }}]
-                        }]
-                    });
-                </script>
-
-
-</div>
+                </div>
             </div>
-        </div>
-    <div>
-    </div>
-        <div class="col-sm-9 hidden" id="charts">
-            <div id="container">
+         </div>
+      </div>
+      <br>
+      <div class="col-m2-12 hidden" id="breakdown-vids">
+      </div>
+   </div>
+   <div class="col-sm-9" id="video-plays">
+      <div class="col-md-8">
+         <!--iframe width="100%" height="315" src="https://www.youtube.com/embed/hHQ9Fiiqu8k" frameborder="0" allowfullscreen></iframe-->
+         <!-- Video Clips -->
+         <div id="tabs">
+            <ul>
+               <li><a href="#tabs-1">Main View</a></li>
+               <li><a href="#tabs-2">Alternative View #1</a></li>
+               <li><a href="#tabs-3">Alternative View #2</a></li>
+            </ul>
+            <div id="tabs-1">
+               <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url }}?autoplay=1' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
             </div>
-            <span>
-                <form action="#">
-                    <fieldset>
-                        <label for="chart-type">Change Statistic</label>
-                        <select name="chart-type" id="chart-type" onchange="chartSwitch()">
-                            <option value="1" selected="selected">Total Yards (Trend)</option>
-                            <option value="2">Total Yards (Cumulative)</option>
-                            <option value="3">Total Completions</option>
-                            <option value="4">Completion Percentage</option>
-                            <option value="5">Yards per Drop-back</option>
-                        </select>
-                    </fieldset>
+            <div id="tabs-2">
+               <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url_alt }}' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+            </div>
+            <div id="tabs-3">
+               <div style='position:relative;padding-bottom:57%'><iframe src='{{ play_detail.vid_url_alt2 }}' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+            </div>
+            <!--p><a href="#"><span class="glyphicon glyphicon-plus"></span>Add a Note</a></p>
+               <p>{{ play_detail.note }}</p-->
+         </div><br>
+                <div class="panel panel-default">
+            <h4>Choose A Play</h4>
+         <div class="row">
+            <div class="col-md-12  panel-body" id="quarters">
+               <ol>
+                  <div id ="quarter1" class="col-sm-12">
 
-                    <fieldset>
-                        <label for="game-only">This Game Only</label>
-                        <input type="checkbox" name="radio-1" id="game-only" checked="checked" onclick="chartSwitch()">
-                        <label for="prev-games">Previous Game</label>
-                        <input type="checkbox" name="radio-1" id="prev-games" onclick="chartSwitch()">
-                        <label for="season-avg">Season Average</label>
-                        <input type="checkbox" name="radio-1" id="season-avg" onclick="chartSwitch()">
-                    </fieldset>
-                    {% for o in other_games.all %}
-                        {{ o.venue }}
-                    {% endfor %}
-
-                {{ season_total_att }}
-
-
-                </form>
-            </span>
+                  </div>
+                  <div id ="quarter2" class="col-sm-12">
+                  </div>
+                  <div id ="quarter3" class="col-sm-12">
+                  </div>
+                  <div id ="quarter4" class="col-sm-12">
+                  </div>
+               </ol>
+               <div id="q1_inspect" title="Quarter 1">
+                  <ol></ol>
+               </div>
+               <div id="q2_inspect" title="Quarter 2">
+                  <ol></ol>
+               </div>
+               <div id="q3_inspect" title="Quarter 3">
+                  <ol></ol>
+               </div>
+               <div id="q4_inspect" title="Quarter 4">
+                  <ol></ol>
+               </div>
+               <script>
+                  $("#q1_inspect").dialog({ autoOpen: false });
+                  $("#q2_inspect").dialog({ autoOpen: false });
+                  $("#q3_inspect").dialog({ autoOpen: false });
+                  $("#q4_inspect").dialog({ autoOpen: false });
+               </script>
+            </div>
+            {% for play in play_list.all %}
+            {% if play.quarter == 1 %}
             <script>
-                var categories = ['1', '2', '3', '4'];
-                var selected = 0;
-                var chart = Highcharts.chart('container', {
-
-                title: {
-                    text: '{{ play_detail.passer }} Performance by Quarter vs {{ play_detail.game.opponent }}'
-                },
-
-                subtitle: {
-                    text: '{{ play_detail.game.date_time }}'
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'Number of Yards'
-                    },
-                    extremes: {
-                        min: 0,
-                        max: 100
-                    }
-                },
-
-                xAxis: {
-                    categories: categories,
-                    title: {
-                        text: " "
-                    }
-                },
-
-                legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        allowPointSelect: true,
-                        point: {
-                            events: {
-                                click: function(e) {
-                                    //var f = this.series.data.valueOf(this.series.point);
-                                    //var g = f.category;
-                                    //alert('x: ' + categories[Math.round(e.xAxis[0].value)]);
-                                    console.log(e.point.category);
-                                    var f = e.point.category;
-                                    selected = f;
-                                    //$('#quarters').removeClass('hidden');
-                                    if (f == 1) {
-                                        $( "#q1_inspect" ).dialog( "open" );
-                                    }
-                                    if (f == 2) {
-                                        $( "#q2_inspect" ).dialog( "open" );
-                                    }
-                                    if (f == 3) {
-                                        $( "#q3_inspect" ).dialog( "open" );
-                                    }
-                                    if (f == 4) {
-                                        $( "#q4_inspect" ).dialog( "open" );
-                                    }
-
-
-
-                                    // Only Show the selected quarter
-                                    // check substring of each div and check if it matches f
-                                }
-                            }
-                        }
-                    }
-                },
-
-                series: [{
-                    name: 'vs {{ play_detail.game.opponent }}',
-                    data: {{ q_yards }}
-                }, {
-                    name: 'Previous Game',
-                    data: [ ],
-                    visible: false
-                },
-                {
-                    name: 'Average',
-                    data: [ ],
-                    visible: false
-                }]
-
-
-                });
-
-
-                function chartSwitch() {
-                    var selectBox = document.getElementById("chart-type");
-                    var val = selectBox.options[selectBox.selectedIndex].value;
-
-                    if (val == 1) {
-                        console.log("yards by quarter");
-                        chart.series[0].setData({{ q_yards }}, false);
-                        chart.yAxis[0].setExtremes(0, null);
-                        chart.yAxis[0].setTitle({text: "Total Yards"});
-
-                        var a = document.getElementById("season-avg");
-                        var b = document.getElementById("prev-games");
-                        if (a.checked) {
-                            console.log('season avg');
-                            var avg = chart.series.length-1;
-                            console.log(avg);
-                            chart.series[avg].show();
-                            chart.series[avg].setData([{{ avg_q1yards }}, {{ avg_q2yards }}, {{ avg_q3yards }}, {{ avg_q4yards }}], false);
-                        }
-                        else {
-                            chart.series[chart.series.length-1].hide();
-                        }
-                        if (b.checked) {
-                            console.log("checked");
-                            var game = {{ game.id }};
-                                console.log(game);
-                                var x = 0;
-                                switch (game) {
-                                    case 1:
-                                        // Need to generate a message to say this was the first game
-                                        break;
-                                    case 2:
-                                        x = {{ quarter_yardage_totals.0 }};
-                                        break;
-                                    case 3:
-                                        x = {{ quarter_yardage_totals.1 }};
-                                        break;
-                                    case 4:
-                                        x = {{ quarter_yardage_totals.2 }};
-                                        break;
-                                }
-                            for (var z=1; z < chart.series.length-1;z++) {
-                                var yards = x;
-                                chart.series[z].show();
-
-
-                            chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
-                            }
-                        }
-                        else {
-                            for (var u=1;u < chart.series.length-1;u++) {
-                                chart.series[u].hide();
-                                chart.redraw();
-                            }
-                        }
-
-                        // check here to see if there is a variant ticked
-                        // to compare to another game etc...
-                        //chart.series[1].setData([42, 51, 103, 84], false);
-                    }
-                    else if (val == 2) {
-                        console.log("yards cumulative");
-                        chart.series[0].setData({{ q_yards_cum }}, false);
-                        chart.yAxis[0].setExtremes(0, null);
-                        chart.yAxis[0].setTitle({text: "Total Yards (Cumulative)"});
-
-                        var a = document.getElementById("season-avg");
-                        var b = document.getElementById("prev-games");
-                        if (a.checked) {
-                            console.log('season avg');
-                            var avg = chart.series.length-1;
-                            console.log(avg);
-                            chart.series[avg].show();
-                            chart.series[avg].setData({{ avg_yards_cum }}, false);
-                        }
-                        else {
-                            chart.series[chart.series.length-1].hide();
-                        }
-                        if (b.checked) {
-                            console.log("checked");
-                            var yards = [0, 0, 0, 0];
-                            var game = {{ game.id }};
-                            switch (game) {
-                                    case 1:
-                                        // Need to generate a message to say this was the first game
-                                        break;
-                                    case 2:
-                                        yards = [{{ quarter_yardage_totals.0.0 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }} + {{ quarter_yardage_totals.0.3 }}];
-                                        break;
-                                    case 3:
-                                        yards = [{{ quarter_yardage_totals.1.0 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }} + {{ quarter_yardage_totals.1.3 }}];
-                                        break;
-                                    case 4:
-                                        yards = [{{ quarter_yardage_totals.2.0 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }} + {{ quarter_yardage_totals.2.3 }}];
-                                        break;
-                                }
-                            for (var z=1; z < chart.series.length-1;z++) {
-                                chart.series[z].show();
-                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
-                            }
-                        }
-                        else {
-                            for (var u=1;u < chart.series.length-1;u++) {
-                                chart.series[u].hide();
-                                chart.redraw();
-                            }
-                        }
-                    }
-                    else if (val == 3) {
-                        console.log("total completions");
-                        chart.series[0].setData({{ totalcomp }} );
-                        chart.yAxis[0].setExtremes(0, null);
-                        chart.yAxis[0].setTitle({text: "Total Completions"});
-
-                        var a = document.getElementById("season-avg");
-                        var b = document.getElementById("prev-games");
-                        if (a.checked) {
-                            console.log('season avg');
-                            var avg = chart.series.length-1;
-                            console.log(avg);
-                            chart.series[avg].show();
-                            chart.series[avg].setData({{ season_avg_comp }}, false);
-                        }
-                        else {
-                            chart.series[chart.series.length-1].hide();
-                        }
-                        if (b.checked) {
-                            console.log("checked");
-                            var yards = [0, 0, 0, 0];
-                            var game = {{ game.id }};
-
-                            switch(game) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    yards = {{ prev_game_comp.0 }};
-                                    break;
-                                case 3:
-                                    yards = {{ prev_game_comp.1 }};
-                                    break;
-                                case 4:
-                                    yards = {{ prev_game_comp.2 }};
-                                    break;
-                            }
-
-                            for (var z=1; z < chart.series.length-1;z++) {
-                                chart.series[z].show();
-                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
-                            }
-                        }
-                        else {
-                            for (var u=1;u < chart.series.length-1;u++) {
-                                chart.series[u].hide();
-                                chart.redraw();
-                            }
-                        }
-                    }
-                    else if (val == 4) {
-                        console.log("comp %");
-                        chart.series[0].setData({{ q_pct }} );
-                        chart.yAxis[0].setExtremes(0, 100);
-                        chart.yAxis[0].setTitle({text: "Completion Percentage"});
-
-                        var a = document.getElementById("season-avg");
-                        var b = document.getElementById("prev-games");
-                        if (a.checked) {
-                            console.log('season avg');
-                            var avg = chart.series.length-1;
-                            console.log(avg);
-                            chart.series[avg].show();
-                            chart.series[avg].setData({{ season_avg_pct }}, false);
-                        }
-                        else {
-                            chart.series[chart.series.length-1].hide();
-                        }
-                        if (b.checked) {
-                            console.log("checked");
-                            var yards = [0, 0, 0, 0];
-                            var game = {{ game.id }};
-
-                            switch(game) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    yards = {{ prev_game_pct.0 }};
-                                    break;
-                                case 3:
-                                    yards = {{ prev_game_pct.1 }};
-                                    break;
-                                case 4:
-                                    yards = {{ prev_game_pct.2 }};
-                                    break;
-                            }
-
-                            for (var z=1; z < chart.series.length-1;z++) {
-                                chart.series[z].show();
-                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
-                            }
-                        }
-                        else {
-                            for (var u=1;u < chart.series.length-1;u++) {
-                                chart.series[u].hide();
-                                chart.redraw();
-                            }
-                        }
-                    }
-                    else if (val == 5) {
-                        console.log("yards per dropback");
-                        chart.series[0].setData({{ q_ypa }});
-                        chart.yAxis[0].setExtremes(0, null);
-                        chart.yAxis[0].setTitle({text: "Yards per Dropback"});
-
-                        var a = document.getElementById("season-avg");
-                        var b = document.getElementById("prev-games");
-                        if (a.checked) {
-                            console.log('season avg');
-                            var avg = chart.series.length-1;
-                            console.log(avg);
-                            chart.series[avg].show();
-                            chart.series[avg].setData({{ season_avg_pct }}, false);
-                        }
-                        else {
-                            chart.series[chart.series.length-1].hide();
-                        }
-                        if (b.checked) {
-                            console.log("checked");
-                            var yards = [0, 0, 0, 0];
-                            var game = {{ game.id }};
-
-                            switch(game) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    yards = {{ prev_game_pct.0 }};
-                                    break;
-                                case 3:
-                                    yards = {{ prev_game_pct.1 }};
-                                    break;
-                                case 4:
-                                    yards = {{ prev_game_pct.2 }};
-                                    break;
-                            }
-
-                            for (var z=1; z < chart.series.length-1;z++) {
-                                chart.series[z].show();
-                                chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
-                            }
-                        }
-                        else {
-                            for (var u=1;u < chart.series.length-1;u++) {
-                                chart.series[u].hide();
-                                chart.redraw();
-                            }
-                        }
-                    }
-                    chart.redraw();
-                }
+               $("#quarter1").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}"><div class="col-sm-2">Q{{ play.quarter}} {{ play.time|time:"H:i" }}</div><div class="col-sm-4"> {{ play.down|ordinal }} & {{ play.distance }} @ {{ play.field_half }} {{ play.yard_line }}</div><div class="col-sm-6"> {% if play.complete %} Completed Pass for {{ play.gain }} yards {% if play.outcome == 'TD' %}for a TD{% endif %}{% endif %}{% if play.complete == False %}{% if play.outcome == 'INT' %} Interception {% endif %}{% if play.outcome == 'SK'%} Sacked {% endif %}{% if play.outcome == 'PA' %}Incomplete Pass{% endif %}{% endif %}</div></a></li');
+               $("#q1_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+            </script>
+            {% endif %}
+            {% if play.quarter == 2 %}
+            <script>
+               $("#quarter2").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}"><div class="col-sm-2">Q{{ play.quarter}} {{ play.time|time:"H:i" }}</div><div class="col-sm-4"> {{ play.down|ordinal }} & {{ play.distance }} @ {{ play.field_half }} {{ play.yard_line }}</div><div class="col-sm-6"> {% if play.complete %} Completed Pass for {{ play.gain }} yards {% if play.outcome == 'TD' %}for a TD{% endif %}{% endif %}{% if play.complete == False %}{% if play.outcome == 'INT' %} Interception {% endif %}{% if play.outcome == 'SK'%} Sacked {% endif %}{% if play.outcome == 'PA' %}Incomplete Pass{% endif %}{% endif %}</div></a></li');
+               $("#q2_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
 
             </script>
-        </div>
-    </div>
+            {% endif %}
+            {% if play.quarter == 3 %}
+            <script>
+               $("#quarter3").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}"><div class="col-sm-2">Q{{ play.quarter}} {{ play.time|time:"H:i" }}</div><div class="col-sm-4"> {{ play.down|ordinal }} & {{ play.distance }} @ {{ play.field_half }} {{ play.yard_line }}</div><div class="col-sm-6"> {% if play.complete %} Completed Pass for {{ play.gain }} yards {% if play.outcome == 'TD' %}for a TD{% endif %}{% endif %}{% if play.complete == False %}{% if play.outcome == 'INT' %} Interception {% endif %}{% if play.outcome == 'SK'%} Sacked {% endif %}{% if play.outcome == 'PA' %}Incomplete Pass{% endif %}{% endif %}</div></a></li');
+               $("#q3_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+
+            </script>
+            {% endif %}
+            {% if play.quarter == 4 %}
+            <script>
+               $("#quarter4").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}"><div class="col-sm-2">Q{{ play.quarter}} {{ play.time|time:"H:i" }}</div><div class="col-sm-4"> {{ play.down|ordinal }} & {{ play.distance }} @ {{ play.field_half }} {{ play.yard_line }}</div><div class="col-sm-6"> {% if play.complete %} Completed Pass for {{ play.gain }} yards {% if play.outcome == 'TD' %}for a TD{% endif %}{% endif %}{% if play.complete == False %}{% if play.outcome == 'INT' %} Interception {% endif %}{% if play.outcome == 'SK'%} Sacked {% endif %}{% if play.outcome == 'PA' %}Incomplete Pass{% endif %}{% endif %}</div></a></li');
+               $("#q4_inspect").append('<li><a href="{% url 'session' game_id=game.id play_id=play.id %}">{{ play }}</a></li');
+
+            </script>
+            {% endif %}
+            {% endfor %}
+         </div>
+      </div>
+
+         <p></p>
+         <!-- Charts -->
+      </div>
+      <div class="col-sm-4 zero-pad panel panel-default">
+         <div class="panel-heading">
+            <h4>Receiver</h4>
+         </div>
+         <div class="panel-body">
+            <h4>{{ play_tagline }}</h4>
+            <div class="row">
+               <div class="col-sm-12">
+                  <p class="strong">#{{ play_detail.receiver.jersey_no }} {{ play_detail.receiver }}</p>
+               </div>
+               <div class="col-sm-6">
+                  <p>Best Route: {{ fav }}</p>
+                  <p>{{ receiver_performance.0 }} Targets</p>
+                  <p>{{ receiver_performance.1 }} Catches</p>
+                  <p>{{ receiver_performance.2 }} Rec. Yards</p>
+                  <p>{{ receiver_performance.3 }} TD</p>
+               </div>
+               <div class="col-sm-6 qb">
+                  <img class="qb" src="{% static play_detail.receiver.imageUrl %}">
+               </div>
+            </div>
+            <br>
+             {% if play_detail.complete %}
+            <p>Receiver was lined up as a {{ play_detail.position }}, catching a {{ play_detail.air_yards }}-yard {{ play_detail.route }} route and gained {{ yac }} additional yards after the catch, reaching a top speed of {{ play_detail.speed }}mph</p>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+   <div>
+   </div>
+   <div class="col-sm-9 hidden" id="charts">
+      <div id="container">
+      </div>
+      <span>
+         <form action="#">
+            <fieldset>
+               <label for="chart-type">Change Statistic</label>
+               <select name="chart-type" id="chart-type" onchange="chartSwitch()">
+                  <option value="1" selected="selected">Total Yards (Trend)</option>
+                  <option value="2">Total Yards (Cumulative)</option>
+                  <option value="3">Total Completions</option>
+                  <option value="4">Completion Percentage</option>
+                  <!--option value="5">Yards per Drop-back</option-->
+               </select>
+            </fieldset>
+            <fieldset>
+               <label for="game-only">This Game Only</label>
+               <input type="checkbox" name="radio-1" id="game-only" checked="checked" onclick="chartSwitch()">
+               <label for="prev-games">Previous Game</label>
+               <input type="checkbox" name="radio-1" id="prev-games" onclick="chartSwitch()">
+               <label for="season-avg">Season Average</label>
+               <input type="checkbox" name="radio-1" id="season-avg" onclick="chartSwitch()">
+            </fieldset>
+         </form>
+      </span>
+      <script>
+         var categories = ['1', '2', '3', '4'];
+         var selected = 0;
+         var chart = Highcharts.chart('container', {
+
+         title: {
+             text: '{{ play_detail.passer }} Performance by Quarter vs {{ play_detail.game.opponent }}'
+         },
+
+         subtitle: {
+             text: '{{ play_detail.game.date_time }}'
+         },
+
+         yAxis: {
+             title: {
+                 text: 'Number of Yards'
+             },
+             extremes: {
+                 min: 0,
+                 max: 100
+             }
+         },
+
+         xAxis: {
+             categories: categories,
+             title: {
+                 text: " "
+             }
+         },
+
+         legend: {
+         layout: 'vertical',
+         align: 'right',
+         verticalAlign: 'middle'
+         },
+
+         plotOptions: {
+             series: {
+                 allowPointSelect: true,
+                 point: {
+                     events: {
+                         click: function(e) {
+                             //var f = this.series.data.valueOf(this.series.point);
+                             //var g = f.category;
+                             //alert('x: ' + categories[Math.round(e.xAxis[0].value)]);
+                             console.log(e.point.category);
+                             var f = e.point.category;
+                             selected = f;
+                             //$('#quarters').removeClass('hidden');
+                             if (f == 1) {
+                                 $( "#q1_inspect" ).dialog( "open" );
+                             }
+                             if (f == 2) {
+                                 $( "#q2_inspect" ).dialog( "open" );
+                             }
+                             if (f == 3) {
+                                 $( "#q3_inspect" ).dialog( "open" );
+                             }
+                             if (f == 4) {
+                                 $( "#q4_inspect" ).dialog( "open" );
+                             }
+
+
+
+                             // Only Show the selected quarter
+                             // check substring of each div and check if it matches f
+                         }
+                     }
+                 }
+             }
+         },
+
+         series: [{
+             name: 'vs {{ play_detail.game.opponent }}',
+             data: {{ q_yards }}
+         }, {
+             name: 'Previous Game',
+             data: [ ],
+             visible: false
+         },
+         {
+             name: 'Average',
+             data: [ ],
+             visible: false
+         }]
+
+
+         });
+
+
+         function chartSwitch() {
+             var selectBox = document.getElementById("chart-type");
+             var val = selectBox.options[selectBox.selectedIndex].value;
+
+             if (val == 1) {
+                 console.log("yards by quarter");
+                 chart.series[0].setData({{ q_yards }}, false);
+                 chart.yAxis[0].setExtremes(0, null);
+                 chart.yAxis[0].setTitle({text: "Total Yards"});
+
+                 var a = document.getElementById("season-avg");
+                 var b = document.getElementById("prev-games");
+                 if (a.checked) {
+                     console.log('season avg');
+                     var avg = chart.series.length-1;
+                     console.log(avg);
+                     chart.series[avg].show();
+                     chart.series[avg].setData([{{ avg_q1yards }}, {{ avg_q2yards }}, {{ avg_q3yards }}, {{ avg_q4yards }}], false);
+                 }
+                 else {
+                     chart.series[chart.series.length-1].hide();
+                 }
+                 if (b.checked) {
+                     console.log("checked");
+                     var game = {{ game.id }};
+                         console.log(game);
+                         var x = 0;
+                         switch (game) {
+                             case 1:
+                                 // Need to generate a message to say this was the first game
+                                 break;
+                             case 2:
+                                 x = {{ quarter_yardage_totals.0 }};
+                                 break;
+                             case 3:
+                                 x = {{ quarter_yardage_totals.1 }};
+                                 break;
+                             case 4:
+                                 x = {{ quarter_yardage_totals.2 }};
+                                 break;
+                         }
+                     for (var z=1; z < chart.series.length-1;z++) {
+                         var yards = x;
+                         chart.series[z].show();
+
+
+                     chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                     }
+                 }
+                 else {
+                     for (var u=1;u < chart.series.length-1;u++) {
+                         chart.series[u].hide();
+                         chart.redraw();
+                     }
+                 }
+
+                 // check here to see if there is a variant ticked
+                 // to compare to another game etc...
+                 //chart.series[1].setData([42, 51, 103, 84], false);
+             }
+             else if (val == 2) {
+                 console.log("yards cumulative");
+                 chart.series[0].setData({{ q_yards_cum }}, false);
+                 chart.yAxis[0].setExtremes(0, null);
+                 chart.yAxis[0].setTitle({text: "Total Yards (Cumulative)"});
+
+                 var a = document.getElementById("season-avg");
+                 var b = document.getElementById("prev-games");
+                 if (a.checked) {
+                     console.log('season avg');
+                     var avg = chart.series.length-1;
+                     console.log(avg);
+                     chart.series[avg].show();
+                     chart.series[avg].setData({{ avg_yards_cum }}, false);
+                 }
+                 else {
+                     chart.series[chart.series.length-1].hide();
+                 }
+                 if (b.checked) {
+                     console.log("checked");
+                     var yards = [0, 0, 0, 0];
+                     var game = {{ game.id }};
+                     switch (game) {
+                             case 1:
+                                 // Need to generate a message to say this was the first game
+                                 break;
+                             case 2:
+                                 yards = [{{ quarter_yardage_totals.0.0 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }}, {{ quarter_yardage_totals.0.0 }} + {{ quarter_yardage_totals.0.1 }} + {{ quarter_yardage_totals.0.2 }} + {{ quarter_yardage_totals.0.3 }}];
+                                 break;
+                             case 3:
+                                 yards = [{{ quarter_yardage_totals.1.0 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }}, {{ quarter_yardage_totals.1.0 }} + {{ quarter_yardage_totals.1.1 }} + {{ quarter_yardage_totals.1.2 }} + {{ quarter_yardage_totals.1.3 }}];
+                                 break;
+                             case 4:
+                                 yards = [{{ quarter_yardage_totals.2.0 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }}, {{ quarter_yardage_totals.2.0 }} + {{ quarter_yardage_totals.2.1 }} + {{ quarter_yardage_totals.2.2 }} + {{ quarter_yardage_totals.2.3 }}];
+                                 break;
+                         }
+                     for (var z=1; z < chart.series.length-1;z++) {
+                         chart.series[z].show();
+                         chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                     }
+                 }
+                 else {
+                     for (var u=1;u < chart.series.length-1;u++) {
+                         chart.series[u].hide();
+                         chart.redraw();
+                     }
+                 }
+             }
+             else if (val == 3) {
+                 console.log("total completions");
+                 chart.series[0].setData({{ totalcomp }} );
+                 chart.yAxis[0].setExtremes(0, null);
+                 chart.yAxis[0].setTitle({text: "Total Completions"});
+
+                 var a = document.getElementById("season-avg");
+                 var b = document.getElementById("prev-games");
+                 if (a.checked) {
+                     console.log('season avg');
+                     var avg = chart.series.length-1;
+                     console.log(avg);
+                     chart.series[avg].show();
+                     chart.series[avg].setData({{ season_avg_comp }}, false);
+                 }
+                 else {
+                     chart.series[chart.series.length-1].hide();
+                 }
+                 if (b.checked) {
+                     console.log("checked");
+                     var yards = [0, 0, 0, 0];
+                     var game = {{ game.id }};
+
+                     switch(game) {
+                         case 1:
+                             break;
+                         case 2:
+                             yards = {{ prev_game_comp.0 }};
+                             break;
+                         case 3:
+                             yards = {{ prev_game_comp.1 }};
+                             break;
+                         case 4:
+                             yards = {{ prev_game_comp.2 }};
+                             break;
+                     }
+
+                     for (var z=1; z < chart.series.length-1;z++) {
+                         chart.series[z].show();
+                         chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                     }
+                 }
+                 else {
+                     for (var u=1;u < chart.series.length-1;u++) {
+                         chart.series[u].hide();
+                         chart.redraw();
+                     }
+                 }
+             }
+             else if (val == 4) {
+                 console.log("comp %");
+                 chart.series[0].setData({{ q_pct }} );
+                 chart.yAxis[0].setExtremes(0, 100);
+                 chart.yAxis[0].setTitle({text: "Completion Percentage"});
+
+                 var a = document.getElementById("season-avg");
+                 var b = document.getElementById("prev-games");
+                 if (a.checked) {
+                     console.log('season avg');
+                     var avg = chart.series.length-1;
+                     console.log(avg);
+                     chart.series[avg].show();
+                     chart.series[avg].setData({{ season_avg_pct }}, false);
+                 }
+                 else {
+                     chart.series[chart.series.length-1].hide();
+                 }
+                 if (b.checked) {
+                     console.log("checked");
+                     var yards = [0, 0, 0, 0];
+                     var game = {{ game.id }};
+
+                     switch(game) {
+                         case 1:
+                             break;
+                         case 2:
+                             yards = {{ prev_game_pct.0 }};
+                             break;
+                         case 3:
+                             yards = {{ prev_game_pct.1 }};
+                             break;
+                         case 4:
+                             yards = {{ prev_game_pct.2 }};
+                             break;
+                     }
+
+                     for (var z=1; z < chart.series.length-1;z++) {
+                         chart.series[z].show();
+                         chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                     }
+                 }
+                 else {
+                     for (var u=1;u < chart.series.length-1;u++) {
+                         chart.series[u].hide();
+                         chart.redraw();
+                     }
+                 }
+             }
+             else if (val == 5) {
+                 console.log("yards per dropback");
+                 chart.series[0].setData({{ q_ypa }});
+                 chart.yAxis[0].setExtremes(0, null);
+                 chart.yAxis[0].setTitle({text: "Yards per Dropback"});
+
+                 var a = document.getElementById("season-avg");
+                 var b = document.getElementById("prev-games");
+                 if (a.checked) {
+                     console.log('season avg');
+                     var avg = chart.series.length-1;
+                     console.log(avg);
+                     chart.series[avg].show();
+                     chart.series[avg].setData({{ season_ypa }}, false);
+                 }
+                 else {
+                     chart.series[chart.series.length-1].hide();
+                 }
+                 if (b.checked) {
+                     console.log("checked");
+                     var yards = [0, 0, 0, 0];
+                     var game = {{ game.id }};
+
+                     switch(game) {
+                         case 1:
+                             break;
+                         case 2:
+                             yards = {{ prev_game_pct.0 }};
+                             break;
+                         case 3:
+                             yards = {{ prev_game_pct.1 }};
+                             break;
+                         case 4:
+                             yards = {{ prev_game_pct.2 }};
+                             break;
+                     }
+
+                     for (var z=1; z < chart.series.length-1;z++) {
+                         chart.series[z].show();
+                         chart.series[z].setData([yards[0], yards[1], yards[2], yards[3]], false);
+                     }
+                 }
+                 else {
+                     for (var u=1;u < chart.series.length-1;u++) {
+                         chart.series[u].hide();
+                         chart.redraw();
+                     }
+                 }
+             }
+             chart.redraw();
+         }
+
+      </script>
+   </div>
+</div>
 </div>
 {% endif %}
 {% endblock %}
